@@ -5,52 +5,67 @@ function Cube() {
     let rotateX = 0;
     let rotateY = 0;
 
+    let red = 0;
+    let green = 0;
+    let blue = 0;
+
+    let shadowRatio = 0;
+    let opacity = 0;
+
+    let width = 50;
+    let height = 100;
+    let depth = 150;
+
+    function color(n: number): string {
+        return `rgba(${red - n * shadowRatio}, ${green - n * shadowRatio}, ${blue - n * shadowRatio}, ${opacity})`;
+    }
+
     let style1 = //front
     `{
-        background: 'rgba(' + (red - 5 * shadowRatio) + ', ' + (green - 5 * shadowRatio) + ', ' + (blue - 5 * shadowRatio) + ', ' + opacity + ')', 
-        width: width + 'px', 
-        height: height + 'px', 
-        transform: 'translate(-50%, -50%) rotateY(0deg) translateZ(' + depth / 2 + 'px)'
+        background: ${color(5)},
+        width: ${width}px,
+        height: ${height}px,
+        transform: 'translate(-50%, -50%) rotateY(0deg) translateZ(${depth / 2}px)'
     }`;
 
     let style2 = //left
     `{
-        background: 'rgba(' + (red - 10 * shadowRatio) + ', ' + (green - 10 * shadowRatio) + ', ' + (blue - 10 * shadowRatio) + ', ' + opacity + ')',
-        width: depth + 'px',
-        height: height + 'px',
-        transform: 'translate(-50%, -50%) rotateY(90deg) translateZ(' + width / 2 + 'px)'
+        background: ${color(10)},
+        width: ${depth}px,
+        height: ${height}px,
+        transform: 'translate(-50%, -50%) rotateY(90deg) translateZ(${width / 2}px)'
     }`;
 
     let style3 = //top
     `{
-        background: 'rgba(' + (red - 0 * shadowRatio) + ', ' + (green - 0 * shadowRatio) + ', ' + (blue - 0) + ', ' + opacity + ')',
-        width: width + 'px',
-        height: depth + 'px',
-        transform: 'translate(-50%, -50%) rotateX(90deg) translateZ(' + height / 2 + 'px)'
+        background: ${color(0)},
+        width: ${width}px,
+        height: ${depth}px,
+        transform: 'translate(-50%, -50%) rotateX(90deg) translateZ('${height / 2}px)'
     }`;
 
     let style4 = //bottom
     `{
-        background: 'rgba(' + (red - 20 * shadowRatio) + ', ' + (green - 20 * shadowRatio) + ', ' + (blue - 20 * shadowRatio) + ', ' + opacity + ')',
-        width: width + 'px',
-        height: depth + 'px',
-        transform: 'translate(-50%, -50%) rotateX(-90deg) translateZ(' + height / 2 + 'px)'
+        background: ${color(20)},
+        width: ${width}px,
+        height: ${depth}px,
+        transform: 'translate(-50%, -50%) rotateX(-90deg) translateZ('${height / 2}px)'
     }`;
 
     let style5 = //right
     `{
-        background: 'rgba(' + (red - 10 * shadowRatio) + ', ' + (green - 10 * shadowRatio) + ', ' + (blue - 10 * shadowRatio) + ', ' + opacity + ')',
-        width: depth + 'px',
-        height: height + 'px',
-        transform: 'translate(-50%, -50%) rotateY(-90deg) translateZ(' + width / 2 + 'px)'
+        background: ${color(10)},
+        width: ${depth}px,
+        height: ${height}px,
+        transform: 'translate(-50%, -50%) rotateY(-90deg) translateZ('${width / 2}px)'
     }`;
 
     let style6 = //back
     `{
-        background: 'rgba(' + (red - 15 * shadowRatio) + ', ' + (green - 15 * shadowRatio) + ', ' + (blue - 15 * shadowRatio) + ', ' + opacity + ')',
-        width: width + 'px',
-        height: height + 'px',
-        transform: 'translate(-50%, -50%) rotateY(180deg) translateZ(' + depth / 2 + 'px)'
+        background: ${color(15)},
+        width: ${width}px,
+        height: ${height}px,
+        transform: 'translate(-50%, -50%) rotateY(180deg) translateZ('${depth / 2}px)'
     }`;
 
     return (
