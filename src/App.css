@@ -1,0 +1,65 @@
+.cube-parent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+}
+
+.face {
+    position: absolute;
+}
+
+
+
+.dvn5khfgk6 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+}
+
+.dvn5khfgk6 .face0 {
+    position: absolute;
+}
+
+.dvn5khfgk6 .-front {
+    width: 252px;
+    height: 354px;
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(53px);
+    background: rgba(103, 148, 193, 0.39);
+}
+
+.dvn5khfgk6 .-left {
+    width: 106px;
+    height: 354px;
+    transform: translate(-50%, -50%) rotateY(90deg) translateZ(126px);
+    background: rgba(78, 123, 168, 0.39);
+}
+
+.dvn5khfgk6 .-top {
+    width: 252px;
+    height: 106px;
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(177px);
+    background: rgba(108, 153, 198, 0.39);
+}
+
+.dvn5khfgk6 .-bottom {
+    width: 252px;
+    height: 106px;
+    transform: translate(-50%, -50%) rotateX(-90deg) translateZ(177px);
+    background: rgba(48, 93, 138, 0.39);
+}
+
+.dvn5khfgk6 .-right {
+    width: 106px;
+    height: 354px;
+    transform: translate(-50%, -50%) rotateY(-90deg) translateZ(126px);
+    background: rgba(78, 123, 168, 0.39);
+}
+
+.dvn5khfgk6 .-back {
+    width: 252px;
+    height: 354px;
+    transform: translate(-50%, -50%) rotateY(180deg) translateZ(53px);
+    background: rgba(63, 108, 153, 0.39);
+}
