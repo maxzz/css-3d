@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { hexaToRgba } from './colors';
+import MovementControl from './MovementControl';
 
 function Cube() {
     const [rotateX, setRotateX] = useState(140);
@@ -89,11 +90,11 @@ function Cube() {
 
 function App() {
     return (
-        <div className="bg-gray-200 h-screen">
-            <div className="relative w-full h-full">
+        <div className="bg-gray-200 h-screen flex flex-col">
+            <MovementControl />
+            <div className="flex-1 relative">
                 <Cube />
             </div>
-            <button>ready</button>
         </div>
     );
 }
