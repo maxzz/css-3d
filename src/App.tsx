@@ -12,8 +12,8 @@ function Cube() {
     let shadowRatio = 5;
     let opacity = .39;
 
-    let width = 250;
-    let height = 350;
+    let width = 150;
+    let height = 250;
     let depth = 200;
 
     function color(n: number): string {
@@ -70,17 +70,17 @@ function Cube() {
 
     return (
         <>
-            <div className="cube-parent" style={{ transform: 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)' }}>
+            <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
                 <div className="face -front" style={style1}></div>
                 <div className="face -left" style={style2}></div>
-                <div className="face -top" style={style3}></div>
-                <div className="face -bottom" style={style4}></div>
-                <div className="face -right" style={style5}></div>
-                <div className="face -back" style={style6}></div>
+                {/* <div className="face -top" style={style3}></div> */}
+                {/* <div className="face -bottom" style={style4}></div> */}
+                {/* <div className="face -right" style={style5}></div> */}
+                {/* <div className="face -back" style={style6}></div> */}
             </div>
 
             <div className="c">
-                <div className="dvn5khfgk6">
+                <div className="dvn5khfgk6" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
                     <div className="face0 -front"></div>
                     <div className="face0 -left"></div>
                     <div className="face0 -top"></div>
@@ -96,8 +96,8 @@ function Cube() {
 
 function App() {
     return (
-        <div className="">
-            <div className="">
+        <div className="bg-gray-400 h-screen">
+            <div className="relative w-full h-full">
                 <Cube />
             </div>
             <button>ready</button>
