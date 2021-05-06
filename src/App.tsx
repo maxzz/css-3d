@@ -69,28 +69,14 @@ function Cube() {
     };
 
     return (
-        <>
-            <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
-                <div className="face -front" style={style1}></div>
-                <div className="face -left" style={style2}></div>
-                <div className="face -top" style={style3}></div>
-                <div className="face -bottom" style={style4}></div>
-                <div className="face -right" style={style5}></div>
-                <div className="face -back" style={style6}></div>
-            </div>
-
-            <div className="c">
-                <div className="dvn5khfgk6" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
-                    <div className="face0 -front"></div>
-                    <div className="face0 -left"></div>
-                    <div className="face0 -top"></div>
-                    <div className="face0 -bottom"></div>
-                    <div className="face0 -right"></div>
-                    <div className="face0 -back"></div>
-                </div>
-            </div>
-
-        </>
+        <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
+            <div className="face -front" style={style1}></div>
+            <div className="face -left" style={style2}></div>
+            <div className="face -top" style={style3}></div>
+            <div className="face -bottom" style={style4}></div>
+            <div className="face -right" style={style5}></div>
+            <div className="face -back" style={style6}></div>
+        </div>
     );
 }
 
