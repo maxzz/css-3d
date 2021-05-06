@@ -3,8 +3,7 @@ import './App.css';
 import MovementControl from './components/MovementControl';
 import CubeModel from './components/CubeModel';
 
-function useMouseRotate({active}: {active: boolean}) {
-
+function useMouseRotate(active: boolean) {
     const [rotation, setRotation] = useState({x: 0, y: 0});
 
     useEffect(() => {
@@ -24,8 +23,7 @@ function useMouseRotate({active}: {active: boolean}) {
 
 function App() {
     const [rotationActive, setRotationActive] = useState(false);
-    let state = {active: rotationActive};
-    const rotation = useMouseRotate(state);
+    const rotation = useMouseRotate(rotationActive);
 
     console.log('aa', rotationActive, rotation);
 
