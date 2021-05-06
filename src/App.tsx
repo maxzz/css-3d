@@ -41,7 +41,7 @@ function Cube() {
         background: color(0),
         width: `${width}px`,
         height: `${depth}px`,
-        transform: `translate(-50%, -50%) rotateX(90deg) translateZ('${height / 2}px)`
+        transform: `translate(-50%, -50%) rotateX(90deg) translateZ(${height / 2}px)`
     };
 
     let style4 = //bottom
@@ -49,7 +49,7 @@ function Cube() {
         background: color(20),
         width: `${width}px`,
         height: `${depth}px`,
-        transform: `translate(-50%, -50%) rotateX(-90deg) translateZ('${height / 2}px)`
+        transform: `translate(-50%, -50%) rotateX(-90deg) translateZ(${height / 2}px)`
     };
 
     let style5 = //right
@@ -57,7 +57,7 @@ function Cube() {
         background: color(10),
         width: `${depth}px`,
         height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(-90deg) translateZ('${width / 2}px)`
+        transform: `translate(-50%, -50%) rotateY(-90deg) translateZ(${width / 2}px)`
     };
 
     let style6 = //back
@@ -65,7 +65,7 @@ function Cube() {
         background: color(15),
         width: `${width}px`,
         height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(180deg) translateZ('${depth / 2}px)`
+        transform: `translate(-50%, -50%) rotateY(180deg) translateZ(${depth / 2}px)`
     };
 
     return (
@@ -73,10 +73,10 @@ function Cube() {
             <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
                 <div className="face -front" style={style1}></div>
                 <div className="face -left" style={style2}></div>
-                {/* <div className="face -top" style={style3}></div> */}
-                {/* <div className="face -bottom" style={style4}></div> */}
-                {/* <div className="face -right" style={style5}></div> */}
-                {/* <div className="face -back" style={style6}></div> */}
+                <div className="face -top" style={style3}></div>
+                <div className="face -bottom" style={style4}></div>
+                <div className="face -right" style={style5}></div>
+                <div className="face -back" style={style6}></div>
             </div>
 
             <div className="c">
