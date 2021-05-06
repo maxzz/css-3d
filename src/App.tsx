@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import './App.css';
+import { hexaToRgba } from './colors';
 
 function Cube() {
     let rotateX = 140;
     let rotateY = 20;
 
-    let red = 0x6c;
-    let green = 0x99;
-    let blue = 0xc6;
+    let colorValue = hexaToRgba('#1879da') || {r:0x18,g:0x79,b:0xda,a:1};
+    let red = colorValue.r;
+    let green = colorValue.g;
+    let blue = colorValue.g;
+    let opacity = colorValue.a;
 
     let shadowRatio = 5;
-    let opacity = .39;
 
     let width = 150;
     let height = 250;
@@ -82,7 +84,7 @@ function Cube() {
 
 function App() {
     return (
-        <div className="bg-gray-400 h-screen">
+        <div className="bg-gray-200 h-screen">
             <div className="relative w-full h-full">
                 <Cube />
             </div>
