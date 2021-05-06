@@ -14,20 +14,24 @@ function useMouseRotate({active}: {active: boolean}) {
                 y: (event.clientX - window.innerWidth / 2) / 5,
             })
         };
-        window.addEventListener('mousemove', handleMouse, false);
-        return () => window.removeEventListener('mousemove', handleMouse);
+
+        active && window.addEventListener('mousemove', handleMouse, false);
+        return () => active ? window.removeEventListener('mousemove', handleMouse) : undefined;
     }, [active]);
 
     return rotation;
 }
 
 function App() {
-    let state = {active: true};
+    const [rotationActive, setRotationActive] = useState(false);
+    let state = {active: rotationActive};
     const rotation = useMouseRotate(state);
+
+    console.log('aa', rotationActive, rotation);
 
     return (
         <div className="bg-gray-200 h-screen flex flex-col">
-            <MovementControl />
+            <MovementControl onClick={(v) => setRotationActive(v)} />
             <div className="flex-1 relative">
                 <CubeModel rotateX={rotation.x} rotateY={rotation.y} />
             </div>
