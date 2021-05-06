@@ -24,16 +24,20 @@ function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
         function onDone() {
             setIsActive(false);
             onClick(false);
+            document.body.style.cursor = 'default';
             document.removeEventListener('mouseup', onDone);
         }
-        //isActive && (document.body.style.cursor = 'move');
+        // isActive && (document.body.style.cursor = 'move');
+        isActive && (requestAnimationFrame(() => {document.body.style.cursor = 'move', console.log('set-------------')
+        }));
+        
         isActive && document.addEventListener('mouseup', onDone, false);
         return () => isActive ? document.removeEventListener('mouseup', onDone) : undefined;
     }, [isActive, onClick]);
 //${isActive ? 'cursor-move': 'cursor-pointer'}
     return (
         <div
-            className={`w-12 h-12 my-4 ml-auto mr-8 p-2 bg-gray-400 border rounded-md border-gray-400 text-gray-100 `}
+            className={`w-12 h-12 my-4 ml-auto mr-8 p-2 bg-gray-400 border rounded-md border-gray-400 text-gray-100 cursor-pointer`}
             style={{cursor: isActive ? 'move': 'pointer'}}
             onMouseDown={() => { setIsActive(true); onClick(true); }}
         >
