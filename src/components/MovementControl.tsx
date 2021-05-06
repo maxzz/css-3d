@@ -1,14 +1,31 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useMouse } from 'react-use';
 import { State } from 'react-use/lib/useMouse';
 
 function MovementControl({onClick}: {onClick: (isOn: boolean) => void}) {
     const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+        const handle = () => {
+            console.log('mouseup handle');
+            setIsActive(false);
+            onClick(false);
+            document.removeEventListener('mouseup', handle);
+        };
+        console.log('mouseup active = ', isActive);
+        
+        isActive && document.addEventListener('mouseup', handle, false);
+        return () => isActive ? document.removeEventListener('mouseup', handle) : undefined;
+    }, [isActive, onClick]);
+
     return (
         <div
             className="w-12 h-12 my-4 ml-auto mr-8 p-2 bg-gray-400 border rounded-md border-gray-400 text-gray-100 cursor-pointer"
-            onMouseDown={() => onClick(true)}
-            onMouseUp={() => onClick(false)}
+            onMouseDown={() => {
+                setIsActive(true);
+                onClick(true);
+            }}
+            // onMouseUp={() => onClick(false)}
             // onClick={() => {
             //     setIsActive(!isActive);
             //     onClick(!isActive);
