@@ -62,7 +62,8 @@ function CubeModel({rotateX, rotateY}: {rotateX: number, rotateY: number}) {
     };
 
     return (
-        <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
+        <div className="cube-parent">
+        {/* <div className="cube-parent" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}> */}
             <div className="face -front" style={style1}></div>
             <div className="face -left" style={style2}></div>
             <div className="face -top" style={style3}></div>

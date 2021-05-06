@@ -22,7 +22,9 @@ function App() {
         <div className="bg-gray-200 h-screen flex flex-col">
             <MovementControl />
             <div className="flex-1 relative">
-                <CubeModel rotateX={rotateX} rotateY={rotateY} />
+                <div className="" style={{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}>
+                    <CubeModel rotateX={rotateX} rotateY={rotateY} />
+                </div>
             </div>
         </div>
     );
