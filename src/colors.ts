@@ -2,7 +2,7 @@ export type ColorRGB = {
     r: number;  // [0..255]
     g: number;  // [0..255]
     b: number;  // [0..255]
-    a?: number; // [0..1]
+    a: number; // [0..1]
 };
 
 export type ColorHSL = {
@@ -33,7 +33,7 @@ export function hexaToRgba(value: string): ColorRGB | undefined {
         r: parseInt(value.substr(0, 2), 16),
         g: parseInt(value.substr(2, 2), 16),
         b: parseInt(value.substr(4, 2), 16),
-        a: value.length === 8 ? parseInt(value.substr(6, 2), 16) : 1
+        a: value.length === 8 ? parseInt(value.substr(6, 2), 16) / 255 : 1
     };
 }
 

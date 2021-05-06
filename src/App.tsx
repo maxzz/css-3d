@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { hexaToRgba } from './colors';
 
 function Cube() {
-    let rotateX = 140;
-    let rotateY = 20;
+    const [rotateX, setRotateX] = useState(140);
+    const [rotateY, setRotateY] = useState(20);
 
-    let colorValue = hexaToRgba('#1879da') || {r:0x18,g:0x79,b:0xda,a:1}; // #187979
+    useEffect(() => {
+        const handleMouse = (event: MouseEvent) => {
+            setRotateY((event.clientX - window.innerWidth / 2) / 5);
+            setRotateX((event.clientY - window.innerWidth / 2) / 5 * -1);
+          };
+        window.addEventListener('mousemove', handleMouse, false);
+        return () => {
+            window.removeEventListener('mousemove', handleMouse);
+        }
+    }, []);
+
+    let colorValue = hexaToRgba('#1879da80') || {r:0x18,g:0x79,b:0xda,a:1}; // #187979
     let red = colorValue.r;
     let green = colorValue.g;
     let blue = colorValue.b;
