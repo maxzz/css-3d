@@ -1,21 +1,33 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useMouse } from 'react-use';
-import { State } from 'react-use/lib/useMouse';
+import React, { useState, useEffect } from 'react';
+
+export function useMouseRotate(active: boolean) {
+    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        function handleMouse(event: MouseEvent) {
+            setRotation({
+                x: (event.clientY - window.innerWidth / 2) / 5 * -1,
+                y: (event.clientX - window.innerWidth / 2) / 5,
+            });
+        }
+        active && window.addEventListener('mousemove', handleMouse, false);
+        return () => active ? window.removeEventListener('mousemove', handleMouse) : undefined;
+    }, [active]);
+
+    return rotation;
+}
 
 function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
-        const handle = () => {
-            console.log('mouseup handle');
+        function onDone() {
             setIsActive(false);
             onClick(false);
-            document.removeEventListener('mouseup', handle);
-        };
-        console.log('mouseup active = ', isActive);
-
-        isActive && document.addEventListener('mouseup', handle, false);
-        return () => isActive ? (document.removeEventListener('mouseup', handle), console.log('remove')) : undefined;
+            document.removeEventListener('mouseup', onDone);
+        }
+        isActive && document.addEventListener('mouseup', onDone, false);
+        return () => isActive ? document.removeEventListener('mouseup', onDone) : undefined;
     }, [isActive, onClick]);
 
     return (
