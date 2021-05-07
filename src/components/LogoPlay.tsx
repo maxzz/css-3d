@@ -5,10 +5,10 @@ function LogoPlay() {
     let path = "M13 10c0-7 9-10 23 0s18 0 26 0 29 20 0 21-19-11-30-16 1 16-10 22S7 35 7 23s6-6 6-13z";
 
     let transformed = svgpath(path)
-                    .scale(0.5)
-                    .translate(10,20)
-                    .rel()
-                    .round(1)
+                    .scale(1.75)
+                    .iterate(function(...rest) {
+                        console.log(...rest);
+                    })
                     .toString();
 
     return (
