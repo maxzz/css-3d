@@ -42,7 +42,7 @@ function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
         >
             {isActive
                 ?
-                <svg viewBox="0 0 36.1 36.1" fill="currentColor" className={`text-red-600 w-20 h-20 transform -translate-x-24 -translate-y-5`}>
+                <svg viewBox="0 0 36.1 36.1" fill="currentColor" className={`text-red-600 w-20 h-20 transform -translate-x-6 translate-y-10`}>
                     <path d="M21.6 14h-7c-.3 0-.5.2-.5.5v7c0 .3.2.5.5.5h7c.3 0 .5-.2.5-.5v-7c0-.3-.3-.5-.5-.5zm-.5 7.1h-6v-6h6v6z" />
                     <path fill="#f7931e" d="M19.5 15H21v6h-1.5z" />
                     <path fill="#fbb03b" d="M15 15h4.5v6H15z" />
