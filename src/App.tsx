@@ -7,9 +7,7 @@ function App() {
     const [rotationActive, setRotationActive] = useState(false);
     const rotation = useMouseRotate(rotationActive);
 
-    const rotationCb = useCallback((v: boolean) => {
-        setRotationActive(v);
-    }, []);
+    const rotationCb = useCallback(setRotationActive, []);
 
     return (
         <div className="bg-gray-200 h-screen flex flex-col">

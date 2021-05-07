@@ -29,7 +29,7 @@ function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
         isActive && document.addEventListener('mouseup', onDone, false);
         return () => isActive ? document.removeEventListener('mouseup', onDone) : undefined;
     }, [isActive, onClick]);
-//${isActive ? 'cursor-move': 'cursor-pointer'}
+
     return (
         <div
             className={`w-12 h-12 my-4 ml-auto mr-8 p-2 bg-gray-400 border rounded-md border-gray-400 text-gray-100 cursor-pointer`}
