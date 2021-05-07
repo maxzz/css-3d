@@ -66,12 +66,12 @@ function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number,
             className="absolute top-1/2 left-1/2 select-none"
             style={{ transformStyle: 'preserve-3d', transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }}
         >
-            <div className="absolute _front_" style={style1}>f</div>
-            <div className="absolute _left__" style={style2}>l</div>
-            <div className="absolute _top___" style={style3}>t</div>
-            <div className="absolute _bottom" style={style4}>b</div>
-            <div className="absolute _right_" style={style5}>r</div>
-            <div className="absolute _back__" style={style6}>k</div>
+            <div className="absolute" style={style1}></div> {/* _front_ */}
+            <div className="absolute" style={style2}></div> {/* _left__ */}
+            <div className="absolute" style={style3}></div> {/* _top___ */}
+            <div className="absolute" style={style4}></div> {/* _bottom */}
+            <div className="absolute" style={style5}></div> {/* _right_ */}
+            <div className="absolute" style={style6}></div> {/* _back__ */}
         </div>
     );
 }
