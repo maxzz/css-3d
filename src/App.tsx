@@ -8,7 +8,7 @@ function App() {
     const [rotationActive, setRotationActive] = useState(false);
     const rotation = useMouseRotate(rotationActive);
 
-    const rotationCb = useCallback(setRotationActive, []);
+    //const rotationCb = useCallback(setRotationActive, []);
 
     return (
         <div className="bg-gray-200 h-screen flex flex-col">
@@ -16,7 +16,7 @@ function App() {
                 <div className="w-32 pt-2">
                     <LogoPlay />
                 </div>
-                <MovementControl onClick={rotationCb} />
+                <MovementControl onClick={setRotationActive} />
             </div>
             <div className="flex-1 relative">
                 <CubeModel rotateX={rotation.x} rotateY={rotation.y} />

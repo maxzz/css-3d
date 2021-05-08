@@ -6,9 +6,9 @@ function LogoPlay() {
 
     let transformed = svgpath(path)
                     .scale(1.75)
-                    .iterate(function(...rest) {
-                        console.log(...rest);
-                    })
+                    // .iterate(function(...rest) {
+                    //     console.log(...rest);
+                    // })
                     .toString();
 
     return (

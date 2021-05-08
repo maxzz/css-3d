@@ -26,9 +26,12 @@ function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
             onClick(false);
             document.removeEventListener('mouseup', onDone);
         }
+        console.log('---------');
+        
         isActive && document.addEventListener('mouseup', onDone, false);
         return () => isActive ? document.removeEventListener('mouseup', onDone) : undefined;
-    }, [isActive, onClick]);
+    }, [isActive]);
+    // }, [isActive, onClick]);
 
     return (
         <div
