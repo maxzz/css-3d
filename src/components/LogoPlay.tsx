@@ -8,7 +8,7 @@ function LogoPlay() {
     let transformed = svgpath(path)
                     .scale(1.47)
                     .iterate(function(segemtns, index, x, y) {
-                        points.push({x, y});
+                        index && points.push({x, y});
                     });
 
     return (
@@ -24,7 +24,9 @@ function LogoPlay() {
             <g filter="url(#a)">
                 <path d={transformed.toString()} fill="none" stroke="#f7931e" />
             </g>
-            {points.map((point, index) => <circle cx={point.x} cy={point.y} r="2" fill="#f7931e" key={index} />)}
+            <g stroke="#f7931e" fill="none">
+                {points.map((point, index) => <circle cx={point.x} cy={point.y} r="3" key={index} />)}
+            </g>
         </svg>
     );
 }
