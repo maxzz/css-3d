@@ -4,12 +4,12 @@ import svgpath from 'svgpath';
 function LogoPlay() {
     let path = "M13 10c0-7 9-10 23 0s18 0 26 0 29 20 0 21-19-11-30-16 1 16-10 22S7 35 7 23s6-6 6-13z";
 
+    let points: {x: number, y: number}[] = [];
     let transformed = svgpath(path)
-                    .scale(1.75)
-                    // .iterate(function(...rest) {
-                    //     console.log(...rest);
-                    // })
-                    .toString();
+                    .scale(1.47)
+                    .iterate(function(segemtns, index, x, y) {
+                        points.push({x, y});
+                    });
 
     return (
         <svg viewBox="0 0 83 43">
@@ -22,8 +22,9 @@ function LogoPlay() {
                 </feMerge>
             </filter>
             <g filter="url(#a)">
-                <path d={transformed} fill="none" stroke="#f7931e" />
+                <path d={transformed.toString()} fill="none" stroke="#f7931e" />
             </g>
+            {points.map((point, index) => <circle cx={point.x} cy={point.y} r="2" fill="#f7931e" key={index} />)}
         </svg>
     );
 }
