@@ -15,9 +15,10 @@ function LogoPlay() {
         <svg viewBox="0 0 83 43">
             <filter filterUnits="objectBoundingBox" id="a">
                 <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation=".7" />
-                <feGaussianBlur in="SourceAlpha" result="blur2" stdDeviation="1.7" />
+                {/* <feGaussianBlur in="SourceAlpha" result="blur2" stdDeviation="1.7" /> */}
+                <feColorMatrix in="SourceGraphic" result="blur2" type="hueRotate" values="220" />
                 <feOffset dx="-1.7" dy="-1.7" in="blur" result="offsetBlurredAlpha1" />
-                <feOffset dx="2.7" dy="2.7" in="blur2" result="offsetBlurredAlpha2" />
+                <feOffset dx="1.7" dy="1.7" in="blur2" result="offsetBlurredAlpha2" />
                 <feMerge>
                     <feMergeNode in="offsetBlurredAlpha1" />
                     <feMergeNode in="offsetBlurredAlpha2" />
