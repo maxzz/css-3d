@@ -4,8 +4,11 @@ import MovementControl, { useMouseRotate } from './components/MovementControl';
 import CubeModel from './components/CubeModel';
 import LogoPlay from './components/LogoPlay';
 
+import { rotActiveAtom } from './atoms';
+import { useAtom } from 'jotai';
+
 function App() {
-    const [rotationActive, setRotationActive] = useState(false);
+    const [rotationActive, setRotationActive] = useAtom(rotActiveAtom);
     const rotation = useMouseRotate(rotationActive);
 
     return (
