@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "jotai": "^0.16.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "svgpath": "^2.3.1"

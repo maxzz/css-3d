@@ -1,7 +1,9 @@
+import { useAtom } from 'jotai';
 import React, { useState, useEffect } from 'react';
+import { rotAtom } from '../atoms';
 
 export function useMouseRotate(active: boolean) {
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [rotation, setRotation] = useAtom(rotAtom);
 
     useEffect(() => {
         function handleMouse(event: MouseEvent) {
