@@ -6,10 +6,9 @@ function LogoPlay() {
 
     let points: {x: number, y: number}[] = [];
     let transformed = svgpath(path)
-                    .scale(1.47)
                     .iterate(function(segemtns, index, x, y) {
                         index && points.push({x, y});
-                    });
+                    }).scale(1.05);
 
     return (
         <svg viewBox="0 0 83 43">
@@ -28,7 +27,10 @@ function LogoPlay() {
             <g filter="url(#a)" style={{stroke: "#ada6ff", fill: "none"}}>
                 <path d={transformed.toString()} />
             </g>
-            <g style={{stroke: "#0016e4", fill: "none"}}>
+            <g filter="url(#a)" style={{stroke: "red", fill: "none"}}>
+                <path d={path} />
+            </g>
+            <g style={{stroke: "#00349e70", fill: "none"}}>
                 {points.map((point, index) => <circle cx={point.x} cy={point.y} r="3" key={index} />)}
             </g>
         </svg>
