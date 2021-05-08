@@ -1,9 +1,10 @@
+import React, { useEffect } from 'react';
 import { useAtom } from 'jotai';
-import React, { useState, useEffect } from 'react';
-import { rotAtom } from '../atoms';
+import { rotActiveAtom, rotAtom } from '../atoms';
 
-export function useMouseRotate(active: boolean) {
+function MovementControl() {
     const [rotation, setRotation] = useAtom(rotAtom);
+    const [rotActive, setRotActive] = useAtom(rotActiveAtom);
 
     useEffect(() => {
         function handleMouse(event: MouseEvent) {
@@ -12,25 +13,18 @@ export function useMouseRotate(active: boolean) {
                 y: (event.clientX - window.innerWidth / 2) / 5,
             });
         }
-        active && window.addEventListener('mousemove', handleMouse, false);
-        return () => active ? window.removeEventListener('mousemove', handleMouse) : undefined;
-    }, [active]);
-
-    return rotation;
-}
-
-function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
-    const [isActive, setIsActive] = useState(false);
+        rotActive && window.addEventListener('mousemove', handleMouse, false);
+        return () => rotActive ? window.removeEventListener('mousemove', handleMouse) : undefined;
+    }, [rotActive]);
 
     useEffect(() => {
         function onDone() {
-            setIsActive(false);
-            onClick(false);
+            setRotActive(false);
             document.removeEventListener('mouseup', onDone);
         }
-        isActive && document.addEventListener('mouseup', onDone, false);
-        return () => isActive ? document.removeEventListener('mouseup', onDone) : undefined;
-    }, [isActive]);
+        rotActive && document.addEventListener('mouseup', onDone, false);
+        return () => rotActive ? document.removeEventListener('mouseup', onDone) : undefined;
+    }, [rotActive]);
 
     return (
         <div
@@ -40,9 +34,9 @@ function MovementControl({ onClick }: { onClick: (isOn: boolean) => void; }) {
                 cursor-pointer
                 relative`
             }
-            onMouseDown={() => { setIsActive(true); onClick(true); }}
+            onMouseDown={() => { setRotActive(true); }}
         >
-            {isActive
+            {rotActive
                 ?
                 <svg viewBox="0 0 36.1 36.1" fill="currentColor" className={`text-red-600 w-20 h-20 transform -translate-x-6 translate-y-10`}>
                     <path d="M21.6 14h-7c-.3 0-.5.2-.5.5v7c0 .3.2.5.5.5h7c.3 0 .5-.2.5-.5v-7c0-.3-.3-.5-.5-.5zm-.5 7.1h-6v-6h6v6z" />

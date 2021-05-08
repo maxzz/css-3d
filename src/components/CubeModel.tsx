@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { hexaToRgba } from '../colors';
 
 function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number, color?: string}) {
