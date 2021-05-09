@@ -7,23 +7,28 @@ function MovementControl() {
     const [rotActive, setRotActive] = useAtom(rotActiveAtom);
 
     useEffect(() => {
-        function handleMouse(event: MouseEvent) {
-            setRotation({
-                x: (event.clientY - window.innerWidth / 2) / 5 * -1,
-                y: (event.clientX - window.innerWidth / 2) / 5,
-            });
-        }
-        rotActive && window.addEventListener('mousemove', handleMouse, false);
-        return () => rotActive ? window.removeEventListener('mousemove', handleMouse) : undefined;
-    }, [rotActive]);
+        if (rotActive) {
+            function onMove(event: MouseEvent) {
+                let newRot = {
+                    x: Math.trunc((event.clientY - window.innerWidth / 2) / 1 * -1),
+                    y: Math.trunc((event.clientX - window.innerWidth / 2) / 1),
+                };
+                console.log('rotation', newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, event, window.innerWidth);
+                
+                setRotation(newRot);
+            }
+            function onDone() {
+                setRotActive(false);
+                document.removeEventListener('mouseup', onDone);
+            }
 
-    useEffect(() => {
-        function onDone() {
-            setRotActive(false);
-            document.removeEventListener('mouseup', onDone);
+            window.addEventListener('mousemove', onMove, false);
+            document.addEventListener('mouseup', onDone, false);
+            return () => {
+                window.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onDone);
+            };
         }
-        rotActive && document.addEventListener('mouseup', onDone, false);
-        return () => rotActive ? document.removeEventListener('mouseup', onDone) : undefined;
     }, [rotActive]);
 
     return (
