@@ -13,30 +13,33 @@ function MovementControl() {
             let rect = containerRef.current.getBoundingClientRect();
             let startPt = {x: Math.trunc(rect.left), y: Math.trunc(rect.top)};
             let prevRot = rotation;
+            let startRot = rotation;
             console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`);
 
             function onMove(event: MouseEvent) {
                 let newRot = {
-                    x: Math.trunc((-startPt.x + event.clientX - window.innerWidth / 2) / 5 * -1),
-                    y: Math.trunc((-startPt.y + event.clientY - window.innerWidth / 2) / 5),
+                    x: Math.trunc((event.clientY - window.innerWidth / 2) / 5 * -1),
+                    y: Math.trunc((event.clientX - window.innerWidth / 2) / 5),
                 };
 
-                console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
+                //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
 
     //             console.log(`move
     // event:{${Math.trunc(-startPt.x + event.clientX)}, ${Math.trunc(-startPt.y + event.clientY)}}
     // prev :{${prevRot.x}, ${prevRot.y}}
     // new  :{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
 
-                if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
-                    //console.log('move', `prev:{${prevRot.x}, ${prevRot.y}} new:{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
-                    setRotation((cur) => {
-                        console.log('cur', cur);
-                        
-                        return newRot;
-                    });
-                    prevRot = newRot;
-                }
+                // if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
+                //     //console.log('move', `prev:{${prevRot.x}, ${prevRot.y}} new:{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
+                //     prevRot = newRot;
+                // }
+                setRotation((cur) => {
+                    newRot.x = cur.x + startRot.x;
+                    newRot.y = cur.y + startRot.y;
+                    //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
+                    console.log('cur', cur, newRot);
+                    return newRot;
+                });
             }
             function onDone() {
                 setRotActive(false);
