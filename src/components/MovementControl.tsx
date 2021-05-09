@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAtom } from 'jotai';
 import { rotActiveAtom, rotAtom } from '../atoms';
 
@@ -6,16 +6,24 @@ function MovementControl() {
     const [rotation, setRotation] = useAtom(rotAtom);
     const [rotActive, setRotActive] = useAtom(rotActiveAtom);
 
+    const containerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        if (rotActive) {
+        if (rotActive && containerRef.current) {
+            let startPt = {x: containerRef.current.clientLeft, y: containerRef.current.clientTop};
+            let prevRot = rotation;
+
             function onMove(event: MouseEvent) {
                 let newRot = {
-                    x: Math.trunc((event.clientY - window.innerWidth / 2) / 1 * -1),
-                    y: Math.trunc((event.clientX - window.innerWidth / 2) / 1),
+                    x: Math.trunc((-startPt.x + event.clientY - window.innerWidth / 2) / 1 * -1),
+                    y: Math.trunc((-startPt.y + event.clientX - window.innerWidth / 2) / 1),
                 };
-                console.log('rotation', newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, event, window.innerWidth);
-                
-                setRotation(newRot);
+
+                if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 5 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 5) {
+                    console.log('rotation', prevRot, newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, event, window.innerWidth);
+                    setRotation(newRot);
+                    prevRot = newRot;
+                }
             }
             function onDone() {
                 setRotActive(false);
@@ -33,6 +41,7 @@ function MovementControl() {
 
     return (
         <div
+            ref={containerRef}
             className={`w-12 h-12 my-4 ml-auto mr-8 p-2
                 text-gray-700 bg-gray-400 active:bg-gray-200
                 border rounded-md border-gray-400
