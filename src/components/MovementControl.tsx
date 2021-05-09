@@ -21,12 +21,7 @@ function MovementControl() {
                     y: Math.trunc((-startPt.y + event.clientY - window.innerWidth / 2) / 5),
                 };
 
-                console.table({
-                    event: {x: Math.trunc(-startPt.x + event.clientX), y: Math.trunc(-startPt.y + event.clientY)},
-                    prev: prevRot,
-                    new: newRot,
-                    client: {x: event.clientX, y: event.clientY}
-                });
+                console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
 
     //             console.log(`move
     // event:{${Math.trunc(-startPt.x + event.clientX)}, ${Math.trunc(-startPt.y + event.clientY)}}
@@ -35,7 +30,11 @@ function MovementControl() {
 
                 if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
                     //console.log('move', `prev:{${prevRot.x}, ${prevRot.y}} new:{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
-                    setRotation(newRot);
+                    setRotation((cur) => {
+                        console.log('cur', cur);
+                        
+                        return newRot;
+                    });
                     prevRot = newRot;
                 }
             }
