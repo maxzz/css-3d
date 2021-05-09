@@ -10,17 +10,20 @@ function MovementControl() {
 
     useEffect(() => {
         if (rotActive && containerRef.current) {
-            let startPt = {x: containerRef.current.clientLeft, y: containerRef.current.clientTop};
+            let rect = containerRef.current.getBoundingClientRect();
+            let startPt = {x: Math.trunc(rect.left), y: Math.trunc(rect.top)};
             let prevRot = rotation;
+            console.log('----------------');
+            
 
             function onMove(event: MouseEvent) {
                 let newRot = {
-                    x: Math.trunc((-startPt.x + event.clientY - window.innerWidth / 2) / 1 * -1),
-                    y: Math.trunc((-startPt.y + event.clientX - window.innerWidth / 2) / 1),
+                    x: Math.trunc((-startPt.x + event.clientX - window.innerWidth / 2) / 5 * -1),
+                    y: Math.trunc((-startPt.y + event.clientY - window.innerHeight / 2) / 5),
                 };
 
-                if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 5 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 5) {
-                    console.log('rotation', prevRot, newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, event, window.innerWidth);
+                if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
+                    console.log('rotation', 'prev', prevRot, 'new', newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, 'start', startPt, {event}, 'window.w', window.innerWidth);
                     setRotation(newRot);
                     prevRot = newRot;
                 }
