@@ -13,17 +13,28 @@ function MovementControl() {
             let rect = containerRef.current.getBoundingClientRect();
             let startPt = {x: Math.trunc(rect.left), y: Math.trunc(rect.top)};
             let prevRot = rotation;
-            console.log('----------------');
-            
+            console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`);
 
             function onMove(event: MouseEvent) {
                 let newRot = {
                     x: Math.trunc((-startPt.x + event.clientX - window.innerWidth / 2) / 5 * -1),
-                    y: Math.trunc((-startPt.y + event.clientY - window.innerHeight / 2) / 5),
+                    y: Math.trunc((-startPt.y + event.clientY - window.innerWidth / 2) / 5),
                 };
 
+                console.table({
+                    event: {x: Math.trunc(-startPt.x + event.clientX), y: Math.trunc(-startPt.y + event.clientY)},
+                    prev: prevRot,
+                    new: newRot,
+                    client: {x: event.clientX, y: event.clientY}
+                });
+
+    //             console.log(`move
+    // event:{${Math.trunc(-startPt.x + event.clientX)}, ${Math.trunc(-startPt.y + event.clientY)}}
+    // prev :{${prevRot.x}, ${prevRot.y}}
+    // new  :{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
+
                 if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
-                    console.log('rotation', 'prev', prevRot, 'new', newRot, `client {x: ${event.clientX}, y: ${event.clientY}}`, 'start', startPt, {event}, 'window.w', window.innerWidth);
+                    //console.log('move', `prev:{${prevRot.x}, ${prevRot.y}} new:{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
                     setRotation(newRot);
                     prevRot = newRot;
                 }
