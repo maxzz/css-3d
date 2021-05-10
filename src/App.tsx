@@ -19,7 +19,7 @@ function App() {
                     <CubeView />
                 </div>
             </div>
-            <div className="absolute left-0 top-0 w-1/2 h-[259px] bg-[#ff6a0021] z-40"></div>
+            <div className="absolute left-0 top-0 w-1/2 h-[259px] border border-dotted border-yellow-500 z-40"></div>
         </Provider>
     );
 }

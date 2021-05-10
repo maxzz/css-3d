@@ -14,7 +14,7 @@ function MovementControl() {
             let startPt = {x: Math.trunc(rect.left), y: Math.trunc(rect.top)};
             let prevRot = rotation;
             let startRot = rotation;
-            console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`);
+            //console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`);
 
             function onMove(event: MouseEvent) {
                 let newRot = {
@@ -22,24 +22,10 @@ function MovementControl() {
                     y: Math.trunc((event.clientX - window.innerWidth / 2)),
                 };
 
-                //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
-
-    //             console.log(`move
-    // event:{${Math.trunc(-startPt.x + event.clientX)}, ${Math.trunc(-startPt.y + event.clientY)}}
-    // prev :{${prevRot.x}, ${prevRot.y}}
-    // new  :{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
-
-                // if (Math.abs(newRot.x) > Math.abs(prevRot.x) + 1 || Math.abs(newRot.y) > Math.abs(prevRot.y) + 1) {
-                //     //console.log('move', `prev:{${prevRot.x}, ${prevRot.y}} new:{${newRot.x}, ${newRot.y}}`, `client:{${event.clientX}, ${event.clientY}}`);
-                //     prevRot = newRot;
-                // }
                 setRotation((cur) => {
-                    // newRot.x = cur.x + startRot.x;
-                    // newRot.y = cur.y + startRot.y;
                     newRot.x -= 45;
                     newRot.y -= 39;
-                    //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
-                    console.log('cur', cur, newRot);
+                    //console.log('cur', cur, newRot);
                     return newRot;
                 });
             }
