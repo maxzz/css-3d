@@ -7,7 +7,7 @@ import { Provider } from 'jotai';
 
 function App() {
     return (
-        // <Provider>
+        <Provider>
             <div className="bg-gray-200 h-screen flex flex-col">
                 <div className="flex">
                     <div className="w-32 pt-2">
@@ -19,7 +19,8 @@ function App() {
                     <CubeView />
                 </div>
             </div>
-        // </Provider>
+            <div className="absolute left-0 top-0 w-1/2 h-[259px] bg-[#ff6a0021] z-40"></div>
+        </Provider>
     );
 }
 

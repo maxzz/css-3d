@@ -18,8 +18,8 @@ function MovementControl() {
 
             function onMove(event: MouseEvent) {
                 let newRot = {
-                    x: Math.trunc((event.clientY - window.innerWidth / 2) / 5 * -1),
-                    y: Math.trunc((event.clientX - window.innerWidth / 2) / 5),
+                    x: Math.trunc((event.clientY - window.innerWidth / 2) * -1),
+                    y: Math.trunc((event.clientX - window.innerWidth / 2)),
                 };
 
                 //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
@@ -34,8 +34,10 @@ function MovementControl() {
                 //     prevRot = newRot;
                 // }
                 setRotation((cur) => {
-                    newRot.x = cur.x + startRot.x;
-                    newRot.y = cur.y + startRot.y;
+                    // newRot.x = cur.x + startRot.x;
+                    // newRot.y = cur.y + startRot.y;
+                    newRot.x -= 45;
+                    newRot.y -= 39;
                     //console.log(`move -startX+eventX: ${Math.trunc(-startPt.x + event.clientX)} prevX: ${prevRot.x} newX: ${newRot.x} event clientX: ${event.clientX}`);
                     console.log('cur', cur, newRot);
                     return newRot;

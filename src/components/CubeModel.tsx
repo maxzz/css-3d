@@ -11,9 +11,9 @@ function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number,
 
     let shadowRatio = 5;
 
-    let width = 150;
-    let height = 250;
-    let depth = 200;
+    let width = 230;
+    let height = 350;
+    let depth = 100;
 
     function makeShade(n: number): string {
         return `rgba(${red - n * shadowRatio}, ${green - n * shadowRatio}, ${blue - n * shadowRatio}, ${opacity})`;
