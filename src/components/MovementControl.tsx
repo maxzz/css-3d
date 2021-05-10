@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
 import { rotActiveAtom, rotAtom } from '../atoms';
 
@@ -7,25 +7,30 @@ function MovementControl() {
     const [rotActive, setRotActive] = useAtom(rotActiveAtom);
 
     const containerRef = useRef<HTMLDivElement>(null);
+    const downPt = useRef<{ x: number; y: number; }>();
 
     useEffect(() => {
         if (rotActive && containerRef.current) {
-            let rect = containerRef.current.getBoundingClientRect();
-            let startPt = {x: Math.trunc(rect.left), y: Math.trunc(rect.top)};
+            let rc = containerRef.current.getBoundingClientRect();
+            let center = { x: rc.left + rc.width / 2, y: rc.top + rc.height / 2 };
+
+            let startPt = { x: Math.trunc(rc.left), y: Math.trunc(rc.top) };
             let prevRot = rotation;
             let startRot = rotation;
-            //console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`);
+            console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`, rc, downPt.current);
 
             function onMove(event: MouseEvent) {
+                // let newRot = {
+                //     x: Math.trunc((event.clientY - window.innerWidth / 2) * -1),
+                //     y: Math.trunc((event.clientX - window.innerWidth / 2)),
+                // };
                 let newRot = {
-                    x: Math.trunc((event.clientY - window.innerWidth / 2) * -1),
-                    y: Math.trunc((event.clientX - window.innerWidth / 2)),
+                    x: event.clientY - downPt.current!.x,
+                    y: event.clientX - downPt.current!.y,
                 };
 
                 setRotation((cur) => {
-                    newRot.x -= 45;
-                    newRot.y -= 39;
-                    //console.log('cur', cur, newRot);
+                    console.log('setRotation', cur, newRot);
                     return newRot;
                 });
             }
@@ -52,7 +57,11 @@ function MovementControl() {
                 cursor-pointer
                 relative`
             }
-            onMouseDown={() => { setRotActive(true); }}
+            onMouseDown={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+                let pt = { x: event.clientX, y: event.clientY };
+                downPt.current = pt;
+                setRotActive(true);
+            }}
         >
             {rotActive
                 ?
