@@ -73,9 +73,8 @@ function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number,
             <div className="absolute" style={style5}></div> {/* _right_ */}
             <div className="absolute" style={style6}></div> {/* _back__ */}
 
-            <div className="absolute" style={{...style5, background: 'red  ', height: '10px'}}></div> {/* _right_ */}
-            <div className="absolute" style={{...style4, background: 'green', height: '10px'}}></div> {/* _bottom */}
-            <div className="absolute" style={{...style6, background: 'transparent', borderTop: '10px dotted blue'}}></div> {/* _back__ */}
+            <div className="absolute" style={{...style5, background: 'transparent', borderBottom: '3px solid blue', borderLeft: '3px solid green'}}></div> {/* _right_ */}
+            <div className="absolute" style={{...style6, background: 'transparent', borderBottom: '3px solid red'}}></div> {/* _back__ */}
         </div>
     );
 }
