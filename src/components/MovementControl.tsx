@@ -58,7 +58,7 @@ function MovementControl() {
                 relative`
             }
             onMouseDown={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                let pt = { x: event.clientX, y: event.clientY };
+                let pt = { x: event.clientX + rotation.y, y: event.clientY + rotation.x };
                 downPt.current = pt;
                 setRotActive(true);
             }}
