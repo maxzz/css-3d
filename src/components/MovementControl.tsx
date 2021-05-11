@@ -25,13 +25,13 @@ function MovementControl() {
                 //     y: Math.trunc((event.clientX - window.innerWidth / 2)),
                 // };
                 let newRot = {
-                    x: event.clientY - downPt.current!.x,
-                    y: event.clientX - downPt.current!.y,
+                    x: event.clientX - downPt.current!.x,
+                    y: event.clientY - downPt.current!.y,
                 };
 
                 setRotation((cur) => {
-                    console.log('setRotation', cur, newRot);
-                    return newRot;
+                    console.log('set', 'evt', {x: event.clientX, y: event.clientY}, 'new', newRot, 'cur', cur, 'down', downPt.current);
+                    return {x: newRot.y, y: newRot.x};
                 });
             }
             function onDone() {
