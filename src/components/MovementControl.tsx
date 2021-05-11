@@ -3,39 +3,23 @@ import { useAtom } from 'jotai';
 import { rotActiveAtom, rotAtom } from '../atoms';
 
 function MovementControl() {
-    const [rotation, setRotation] = useAtom(rotAtom);
-    const [rotActive, setRotActive] = useAtom(rotActiveAtom);
+    const [rotation, rotationSet] = useAtom(rotAtom);
+    const [rotActive, rotActiveSet] = useAtom(rotActiveAtom);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const downPt = useRef<{ x: number; y: number; }>();
 
     useEffect(() => {
         if (rotActive && containerRef.current) {
-            let rc = containerRef.current.getBoundingClientRect();
-            let center = { x: rc.left + rc.width / 2, y: rc.top + rc.height / 2 };
-
-            let startPt = { x: Math.trunc(rc.left), y: Math.trunc(rc.top) };
-            let prevRot = rotation;
-            let startRot = rotation;
-            console.log('----------------', `start:{${startPt.x}, ${startPt.y}} window:{${window.innerWidth}, ${window.innerHeight}}`, rc, downPt.current);
-
             function onMove(event: MouseEvent) {
-                // let newRot = {
-                //     x: Math.trunc((event.clientY - window.innerWidth / 2) * -1),
-                //     y: Math.trunc((event.clientX - window.innerWidth / 2)),
-                // };
-                let newRot = {
+                const newRot = {
                     x: event.clientX - downPt.current!.x,
                     y: event.clientY - downPt.current!.y,
                 };
-
-                setRotation((cur) => {
-                    console.log('set', 'evt', {x: event.clientX, y: event.clientY}, 'new', newRot, 'cur', cur, 'down', downPt.current);
-                    return {x: newRot.y, y: newRot.x};
-                });
+                rotationSet({x: newRot.y, y: newRot.x});
             }
             function onDone() {
-                setRotActive(false);
+                rotActiveSet(false);
                 document.removeEventListener('mouseup', onDone);
             }
 
@@ -58,14 +42,17 @@ function MovementControl() {
                 relative`
             }
             onMouseDown={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                let pt = { x: event.clientX + rotation.y, y: event.clientY + rotation.x };
-                downPt.current = pt;
-                setRotActive(true);
+                downPt.current = { x: event.clientX + rotation.y, y: event.clientY + rotation.x };
+                rotActiveSet(true);
             }}
         >
             {rotActive
                 ?
-                <svg viewBox="0 0 36.1 36.1" fill="currentColor" className={`text-red-600 w-20 h-20 transform -translate-x-6 translate-y-10`}>
+                <svg
+                    viewBox="0 0 36.1 36.1"
+                    className={`text-red-700 w-20 h-20 transform -translate-x-6 translate-y-10`}
+                    fill="currentColor"
+                >
                     <path d="M21.6 14h-7c-.3 0-.5.2-.5.5v7c0 .3.2.5.5.5h7c.3 0 .5-.2.5-.5v-7c0-.3-.3-.5-.5-.5zm-.5 7.1h-6v-6h6v6z" />
                     <path fill="#f7931e" d="M19.5 15H21v6h-1.5z" />
                     <path fill="#fbb03b" d="M15 15h4.5v6H15z" />

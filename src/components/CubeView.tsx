@@ -8,8 +8,7 @@ function CubeView() {
     return (
         <div>
             <CubeModel rotateX={rotation.x} rotateY={rotation.y} />
-            
-            <div className="px-4">x:{rotation.x} y:{rotation.y}</div>
+            {/* <div className="px-4">x:{rotation.x} y:{rotation.y}</div> */}
         </div>
     );
 }
