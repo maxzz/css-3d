@@ -16,7 +16,7 @@ function MovementControl() {
                     x: event.clientX - downPt.current!.x,
                     y: event.clientY - downPt.current!.y,
                 };
-                rotationSet({x: newRot.y, y: newRot.x});
+                rotationSet({ x: newRot.y, y: newRot.x });
             }
             function onDone() {
                 rotActiveSet(false);
@@ -38,13 +38,18 @@ function MovementControl() {
             className={`w-12 h-12 my-4 ml-auto mr-8 p-2
                 text-gray-700 bg-gray-400 active:bg-gray-200
                 border rounded-md border-gray-400
-                cursor-pointer
-                relative`
+                cursor-pointer relative`
             }
-            onMouseDown={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+            onMouseDown={(event: React.MouseEvent) => {
                 downPt.current = { x: event.clientX + rotation.y, y: event.clientY + rotation.x };
                 rotActiveSet(true);
             }}
+            onClick={(event: React.MouseEvent) => {
+                if (event.ctrlKey) {
+                    rotationSet({ x: 0, y: 0 });
+                }
+            }}
+            title="Drag - rotate; Ctrl+Click - reset rotation"
         >
             {rotActive
                 ?
