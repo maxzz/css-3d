@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import '../assets/slider.scss';
 
 function mapRange(
@@ -13,6 +13,35 @@ function mapRange(
 }
 
 function Slider() {
+    const tracker = useRef<HTMLDivElement>(null);
+    const [trackerPos, trackerPosSet] = useState(40);
+
+    function onMouseDown(ev: React.MouseEvent) {
+        ev.preventDefault();
+
+        (ev.currentTarget as HTMLElement)?.focus();
+
+		document.addEventListener('mousemove', onDocumentMouseMove);
+		document.addEventListener('mouseup', onDocumentMouseUp);
+
+        function onDocumentMouseMove(ev: MouseEvent) {
+            const win = tracker.current!.ownerDocument.defaultView;
+	        const rect = tracker.current!.getBoundingClientRect();
+            const pos = {
+                x: ev.pageX - (((win && win.scrollX) || 0) + rect.left),
+                y: ev.pageY - (((win && win.scrollY) || 0) + rect.top),
+            };
+            
+            console.log(pos);
+            trackerPosSet(pos.x);
+        }
+
+        function onDocumentMouseUp(ev: MouseEvent) {
+            document.removeEventListener('mousemove', onDocumentMouseMove);
+            document.removeEventListener('mouseup', onDocumentMouseUp);
+        }
+    } //onMouseDown()
+
     return (
         <div className="tp tp-rotv">
             {/* Row */}
@@ -23,8 +52,8 @@ function Slider() {
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
                                 <div className="tp-sldv">
-                                    <div className="tp-sldv_t" tabIndex={0}>
-                                        <div className="tp-sldv_k w-[67.35%]">
+                                    <div className="tp-sldv_t" tabIndex={0} ref={tracker} onMouseDown={onMouseDown}>
+                                        <div className="tp-sldv_k" style={{width: trackerPos}}>
                                             <div className="c">
                                             </div>
                                         </div>
