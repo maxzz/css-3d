@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import '../assets/slider.scss';
+import './slider.scss';
 
 function mapRange(value: number, start1: number, end1: number, start2: number, end2: number): number {
     const p = (value - start1) / (end1 - start1);

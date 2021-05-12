@@ -3,7 +3,7 @@ import './App.css';
 import MovementControl from './components/MovementControl';
 import CubeView from './components/CubeView';
 import LogoPlay from './components/LogoPlay';
-import Slider from './components/Slider';
+import SliderGroup from './components/slider/SliderGroup';
 import { Provider } from 'jotai';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
                     </div>
                     <MovementControl />
                 </div>
-                <Slider />
+                <SliderGroup />
                 <div className="flex-1 relative">
                     <CubeView />
                 </div>
