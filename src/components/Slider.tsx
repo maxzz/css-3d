@@ -53,6 +53,16 @@ function Slider() {
         }
     } //onMouseDown()
 
+    // function createNumberFormatter(digits: number): (value: number) => string {
+    //     return (value: number): string => {
+    //         return value.toFixed(Math.max(Math.min(digits, 20), 0));
+    //     };
+    // }
+
+    function NumberFormatter(value: number, digits: number): string {
+        return value.toFixed(Math.max(Math.min(digits, 20), 0));
+    }
+
     return (
         <div className="tp tp-rotv">
             {/* Row */}
@@ -73,7 +83,7 @@ function Slider() {
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={trackerPos} readOnly />
+                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(trackerPos, 2)} readOnly />
                                 </div>
                             </div>
                         </div>
