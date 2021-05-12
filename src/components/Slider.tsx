@@ -1,15 +1,13 @@
 import React, { useRef, useState } from 'react';
 import '../assets/slider.scss';
 
-function mapRange(
-    value: number,
-    start1: number,
-    end1: number,
-    start2: number,
-    end2: number,
-): number {
+function mapRange(value: number, start1: number, end1: number, start2: number, end2: number): number {
     const p = (value - start1) / (end1 - start1);
     return start2 + p * (end2 - start2);
+}
+
+function constrainRange(value: number, min: number, max: number): number {
+	return Math.min(Math.max(value, min), max);
 }
 
 function Slider() {
@@ -30,10 +28,23 @@ function Slider() {
             const pos = {
                 x: ev.pageX - (((win && win.scrollX) || 0) + rect.left),
                 y: ev.pageY - (((win && win.scrollY) || 0) + rect.top),
+                w: rect.width,
+                h: rect.height,
             };
-            
-            console.log(pos);
-            trackerPosSet(pos.x);
+
+            const minValue = 0;
+            const maxValue = 100;
+
+            const rawValue = mapRange(
+                constrainRange(pos.x, 0, rect.width),
+                0,
+                rect.width,
+                minValue,
+                maxValue,
+            );            
+
+            console.log(rawValue);
+            trackerPosSet(rawValue);
         }
 
         function onDocumentMouseUp(ev: MouseEvent) {
@@ -62,7 +73,7 @@ function Slider() {
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" defaultValue="63" />
+                                    <input className="tp-txtv_i" type="text" value={trackerPos} readOnly />
                                 </div>
                             </div>
                         </div>
