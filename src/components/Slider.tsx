@@ -14,28 +14,27 @@ function mapRange(
 
 function Slider() {
     return (
-        <div className="tp">
+        <div className="tp tp-rotv">
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
-                    {/* Label */}
                     <div className="tp-lblv_l">label</div>
-                    {/* Slider and Value container */}
-                    <div className="tp-lblv_v bg-purple-100">
+                    <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
-                            {/* Slider */}
-                            <div className="tp-sldv">
-                                <div className="tp-sldv_t" tabIndex={0}>
-                                    b
-                                <div className="tp-sldv_k w-[67.35%]">
-                                        <div className="c">
+                            <div className="tp-sldtxtv_s">
+                                <div className="tp-sldv">
+                                    <div className="tp-sldv_t" tabIndex={0}>
+                                        <div className="tp-sldv_k w-[67.35%]">
+                                            <div className="c">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {/* Input Value */}
                             <div className="tp-sldtxtv_t">
-                                <input type="text" value="32" />
+                                <div className="tp-txtv tp-txtv-num">
+                                    <input className="tp-txtv_i" type="text" defaultValue="63" />
+                                </div>
                             </div>
                         </div>
                     </div>
