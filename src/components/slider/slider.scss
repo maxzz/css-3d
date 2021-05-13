@@ -344,31 +344,6 @@ $z-index-picker: 1000;
 
 .custom-vars {
     --tp-base-background-color: #e5e7eb;
-
-    // --bs-br: var(--tp-base-border-radius-v3, 6px);
-    // --bs-bg: var(--tp-base-background-color, #e5e7eb); // bg-gray-100 = #e5e7eb //#2f3137 = hsl(225, 8%, 20%)
-    // --bs-sh: var(--tp-base-shadow-color, rgba(0, 0, 0, 0.2));
-
-    // --btn-bg: var(--tp-button-background-color, hsl(229, 7%, 70%));
-    // --btn-bg-a: var(--tp-button-background-color-active, hsl(228, 6%, 85%));
-    // --btn-bg-f: var(--tp-button-background-color-focus, hsl(225, 8%, 80%));
-    // --btn-bg-h: var(--tp-button-background-color-hover, hsl(233, 7%, 75%));
-    // --btn-fg: var(--tp-button-foreground-color, hsl(225, 8%, 20%));
-
-    // --cnt-bg: var(--tp-container-background-color, var(--tp-folder-background-color, rgba(187, 188, 196, 0.1)));
-    // --cnt-bg-a: var(--tp-container-background-color-active, var(--tp-folder-background-color-active, rgba(187, 188, 196, 0.25)));
-    // --cnt-bg-f: var(--tp-container-background-color-focus, var(--tp-folder-background-color-focus, rgba(187, 188, 196, 0.2)));
-    // --cnt-bg-h: var(--tp-container-background-color-hover, var(--tp-folder-background-color-hover, rgba(187, 188, 196, 0.15)));
-    // --cnt-fg: var(--tp-container-foreground-color, var(--tp-folder-foreground-color, #bbbcc4));
-
-    // --in-bg: var(--tp-input-background-color, rgba(0, 0, 0, 0.2));
-    // --in-bg-a: var(--tp-input-background-color-active, rgba(0, 0, 0, 0.35));
-    // --in-bg-f: var(--tp-input-background-color-focus, rgba(0, 0, 0, 0.3));
-    // --in-bg-h: var(--tp-input-background-color-hover, rgba(0, 0, 0, 0.25));
-    // --in-fg: var(--tp-input-foreground-color, #bbbcc4);
-
-    // --lbl-fg: var(--tp-label-foreground-color, rgba(187, 188, 196, 0.7));
-    // --mo-bg: var(--tp-monitor-background-color, rgba(0, 0, 0, 0.2));
-    // --mo-fg: var(--tp-monitor-foreground-color, rgba(187, 188, 196, 0.7));
-    // --grv-fg: var(--tp-groove-foreground-color, var(--tp-separator-color, rgba(0, 0, 0, 0.2)));
+    --tp-label-foreground-color: rgba(0, 0, 0, 0.7);
+    --tp-input-foreground-color: hsl(233, 8%, 21%);
 }
