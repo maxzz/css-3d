@@ -19,15 +19,18 @@ function constrainRange(value: number, min: number, max: number): number {
 	return Math.min(Math.max(value, min), max);
 }
 
-type SliderProps = {
+export type InputValue = {
     value: number,
-    valueSet: (pos: number) => void,
     minValue?: number,
     maxValue?: number,
     step?: number,
 }
 
-const SliderView: React.FC<SliderProps> = (props) => {
+type SliderViewProps = InputValue & {
+    valueSet: (pos: number) => void
+};
+
+const SliderView: React.FC<SliderViewProps> = (props) => {
     const {
         value,
         valueSet,
@@ -35,9 +38,9 @@ const SliderView: React.FC<SliderProps> = (props) => {
         maxValue = 200,
         step = 1,
     } = props;
-    const tracker = React.useRef<HTMLDivElement>(null);
-
     const viewValue = constrainRange(mapRange(value, minValue, maxValue, 0, 100), 0, 100);
+    
+    const tracker = React.useRef<HTMLDivElement>(null);
 
     function onMouseDown(ev: React.MouseEvent) {
         ev.preventDefault();
