@@ -53,12 +53,11 @@ type SliderViewProps = InputValue & {
 
 const SliderView: React.FC<SliderViewProps> = (props) => {
     const {
+        minValue = 0,
+        maxValue = 100,
+        baseStep = 1,
         value,
         valueSet,
-        minValue = 0,
-        maxValue = 200,
-        baseStep = 1,
-        digits = 0,
     } = props;
     const viewValue = constrainRange(mapRange(value, minValue, maxValue, 0, 100), 0, 100);
 
@@ -99,7 +98,7 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
     return (
         <div className="tp-sldv" onKeyDown={onKeyDown}>
             <div className="tp-sldv_t" tabIndex={0} ref={tracker} onMouseDown={onMouseDown}>
-                <div className="tp-sldv_k" style={{ width: viewValue }}>
+                <div className="tp-sldv_k" style={{ width: `${viewValue}%` }}>
                 </div>
             </div>
         </div>

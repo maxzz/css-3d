@@ -4,6 +4,7 @@ import './slider.scss';
 
 function SliderGroup() {
     const [value, valueSet] = React.useState(40);
+    const digits = 0;
     return (
         <div className="tp-vars tp-rotv custom-vars">
             {/* Row */}
@@ -13,11 +14,11 @@ function SliderGroup() {
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <SliderView value={value} valueSet={valueSet} maxValue={100} />
+                                <SliderView value={value} valueSet={valueSet} maxValue={50} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(value, 2)} readOnly />
+                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(value, digits)} readOnly />
                                 </div>
                             </div>
                         </div>
