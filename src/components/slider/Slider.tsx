@@ -1,5 +1,15 @@
 import React from 'react';
 
+// function createNumberFormatter(digits: number): (value: number) => string {
+//     return (value: number): string => {
+//         return value.toFixed(Math.max(Math.min(digits, 20), 0));
+//     };
+// }
+
+export function NumberFormatter(value: number, digits: number): string {
+    return value.toFixed(Math.max(Math.min(digits, 20), 0));
+}
+
 function mapRange(value: number, start1: number, end1: number, start2: number, end2: number): number {
     const p = (value - start1) / (end1 - start1);
     return start2 + p * (end2 - start2);
@@ -17,7 +27,7 @@ type SliderProps = {
     step?: number,
 }
 
-function Slider(props: SliderProps) {
+function SliderView(props: SliderProps) {
     const tracker = React.useRef<HTMLDivElement>(null);
 
     function onMouseDown(ev: React.MouseEvent) {
@@ -63,12 +73,10 @@ function Slider(props: SliderProps) {
         <div className="tp-sldv">
             <div className="tp-sldv_t" tabIndex={0} ref={tracker} onMouseDown={onMouseDown}>
                 <div className="tp-sldv_k" style={{ width: props.value }}>
-                    <div className="c">
-                    </div>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Slider;
+export default SliderView;

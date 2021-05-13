@@ -116,60 +116,66 @@ $z-index-picker: 1000;
     }
 
     &_t {
+        position: relative;
         box-sizing: border-box;
-        cursor: pointer;
         height: var(--bld-h);
         margin: 0 ($slider-knob-size / 2);
         outline: none;
-        position: relative;
+        cursor: pointer;
 
         &::before {
-            background-color: var(--in-bg);
-            border-radius: 1px;
-            bottom: 0;
             content: "";
             display: block;
+            background-color: var(--in-bg);
+            border-radius: 1px;
+
             height: 2px;
-            left: 0;
-            margin: auto;
+
             position: absolute;
-            right: 0;
+            left: 0;
             top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
         }
     }
     &_k {
-        height: 100%;
-        left: 0;
         position: absolute;
+        left: 0;
         top: 0;
+        height: 100%;
 
         &::before {
+            content: "";
+            display: block;
             background-color: var(--in-fg);
             border-radius: 1px;
-            bottom: 0;
-            content: "";
-            display: block;
+
             height: 2px;
+
+            position: absolute;
             left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
             margin-bottom: auto;
             margin-top: auto;
-            position: absolute;
-            right: 0;
-            top: 0;
         }
         &::after {
-            background-color: var(--btn-bg);
-            border-radius: var(--elm-br);
-            bottom: 0;
             content: "";
             display: block;
+            background-color: var(--btn-bg);
+            border-radius: var(--elm-br);
+
             height: $slider-knob-size;
+            right: -$slider-knob-size / 2;
+            width: $slider-knob-size;
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
             margin-bottom: auto;
             margin-top: auto;
-            position: absolute;
-            right: -$slider-knob-size / 2;
-            top: 0;
-            width: $slider-knob-size;
         }
     }
     &_t:hover &_k::after {
@@ -203,15 +209,16 @@ $z-index-picker: 1000;
 %input {
 	//@extend %resetUserAgent;
 
-	background-color: var(--in-bg);
-	border-radius: var(--elm-br);
-	box-sizing: border-box;
-	color: var(--in-fg);
-	font-family: inherit;
-	height: var(--bld-h);
-	line-height: var(--bld-h);
 	min-width: 0;
 	width: 100%;
+	height: var(--bld-h);
+	line-height: var(--bld-h);
+
+	border-radius: var(--elm-br);
+	box-sizing: border-box;
+	background-color: var(--in-bg);
+	color: var(--in-fg);
+	font-family: inherit;
 
 	&:hover {
 		background-color: var(--in-bg-h);
@@ -226,6 +233,7 @@ $z-index-picker: 1000;
 		opacity: 0.5;
 	}
 }
+
 
 
 
@@ -263,28 +271,30 @@ $z-index-picker: 1000;
 		opacity: 0.3;
 	}
 	&_k {
-		cursor: pointer;
-		height: 100%;
-		left: 2px - (($knob-bounds-width - $knob-visual-width) / 2);
 		position: absolute;
+		left: 2px - (($knob-bounds-width - $knob-visual-width) / 2);
 		top: 0;
 		width: $knob-bounds-width;
+		height: 100%;
+		cursor: pointer;
 
 		&::before {
-			background-color: var(--in-fg);
-			border-radius: $knob-visual-width / 2;
-			bottom: 0;
 			content: '';
-			height: calc(var(--bld-h) - 4px);
+			position: absolute;
 			left: 50%;
+			top: 0;
+			bottom: 0;
+			width: $knob-visual-width;
+			height: calc(var(--bld-h) - 4px);
+
 			margin-bottom: auto;
 			margin-left: -($knob-visual-width / 2);
 			margin-top: auto;
+
+			background-color: var(--in-fg);
+			border-radius: $knob-visual-width / 2;
 			opacity: 0.1;
-			position: absolute;
-			top: 0;
 			transition: border-radius 0.1s, height 0.1s, transform 0.1s, width 0.1s;
-			width: $knob-visual-width;
 		}
 	}
 	&_k:hover::before,
@@ -292,23 +302,23 @@ $z-index-picker: 1000;
 		opacity: 1;
 	}
 	&#{&}-drg &_k::before {
-		border-radius: 50%;
+        width: 4px;
 		height: 4px;
+		border-radius: 50%;
 		transform: translateX(($knob-visual-width - 4px) / 2);
-		width: 4px;
 	}
 	&_g {
-		bottom: 0;
 		display: block;
-		height: 8px;
+		position: absolute;
 		left: 50%;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		height: 8px;
 		margin: auto;
 		overflow: visible;
-		pointer-events: none;
-		position: absolute;
-		top: 0;
 		visibility: hidden;
-		width: 100%;
+		pointer-events: none;
 	}
 	&#{&}-drg &_g {
 		visibility: visible;
@@ -324,7 +334,7 @@ $z-index-picker: 1000;
 	}
 
 	.#{$prefix}-ttv {
-		margin-left: $knob-bounds-width / 2;
+        margin-left: $knob-bounds-width / 2;
 		visibility: hidden;
 	}
 	&#{&}-drg .#{$prefix}-ttv {

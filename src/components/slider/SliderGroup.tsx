@@ -1,19 +1,9 @@
 import React from 'react';
-import Slider from './Slider';
+import SliderView, { NumberFormatter } from './Slider';
 import './slider.scss';
 
 function SliderGroup() {
     const [value, valueSet] = React.useState(40);
-
-    // function createNumberFormatter(digits: number): (value: number) => string {
-    //     return (value: number): string => {
-    //         return value.toFixed(Math.max(Math.min(digits, 20), 0));
-    //     };
-    // }
-
-    function NumberFormatter(value: number, digits: number): string {
-        return value.toFixed(Math.max(Math.min(digits, 20), 0));
-    }
 
     return (
         <div className="tp tp-rotv">
@@ -24,7 +14,7 @@ function SliderGroup() {
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <Slider value={value} valueSet={valueSet} />
+                                <SliderView value={value} valueSet={valueSet} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
