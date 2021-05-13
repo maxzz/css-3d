@@ -27,8 +27,17 @@ type SliderProps = {
     step?: number,
 }
 
-function SliderView(props: SliderProps) {
+const SliderView: React.FC<SliderProps> = (props) => {
+    const {
+        value,
+        valueSet,
+        minValue = 0,
+        maxValue = 200,
+        step = 1,
+    } = props;
     const tracker = React.useRef<HTMLDivElement>(null);
+
+    const viewValue = constrainRange(mapRange(value, minValue, maxValue, 0, 100), 0, 100);
 
     function onMouseDown(ev: React.MouseEvent) {
         ev.preventDefault();
@@ -48,19 +57,10 @@ function SliderView(props: SliderProps) {
                 h: rect.height,
             };
 
-            const minValue = 0;
-            const maxValue = 100;
-
-            const rawValue = mapRange(
-                constrainRange(pos.x, 0, rect.width),
-                0,
-                rect.width,
-                minValue,
-                maxValue,
-            );            
+            const rawValue = mapRange(constrainRange(pos.x, 0, rect.width), 0, rect.width, minValue, maxValue);
 
             console.log(rawValue);
-            props.valueSet(rawValue);
+            valueSet(rawValue);
         }
 
         function onDocumentMouseUp(ev: MouseEvent) {
@@ -72,11 +72,11 @@ function SliderView(props: SliderProps) {
     return (
         <div className="tp-sldv">
             <div className="tp-sldv_t" tabIndex={0} ref={tracker} onMouseDown={onMouseDown}>
-                <div className="tp-sldv_k" style={{ width: props.value }}>
+                <div className="tp-sldv_k" style={{ width: viewValue }}>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default SliderView;

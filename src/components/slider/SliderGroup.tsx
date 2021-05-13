@@ -14,7 +14,7 @@ function SliderGroup() {
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <SliderView value={value} valueSet={valueSet} />
+                                <SliderView value={value} valueSet={valueSet} maxValue={100} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
