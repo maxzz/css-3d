@@ -21,8 +21,8 @@ function constrainRange(value: number, min: number, max: number): number {
 
 interface StepKeys {
 	altKey: boolean;
-	downKey: boolean;
 	shiftKey: boolean;
+	downKey: boolean;
 	upKey: boolean;
 }
 
@@ -32,11 +32,11 @@ function getStepForKey(baseStep: number, keys: StepKeys): number {
 }
 
 function getVerticalStepKeys(ev: KeyboardEvent): StepKeys {
-	return { altKey: ev.altKey, downKey: ev.key === 'ArrowDown', shiftKey: ev.shiftKey, upKey: ev.key === 'ArrowUp' };
+	return { altKey: ev.altKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowDown', upKey: ev.key === 'ArrowUp' };
 }
 
 function getHorizontalStepKeys(ev: KeyboardEvent): StepKeys {
-	return { altKey: ev.altKey, downKey: ev.key === 'ArrowLeft', shiftKey: ev.shiftKey, upKey: ev.key === 'ArrowRight' };
+	return { altKey: ev.altKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowLeft', upKey: ev.key === 'ArrowRight' };
 }
 
 export type InputValue = {
@@ -89,9 +89,10 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
         }
     } //onMouseDown()
 
-    function onKeyDown(ev: React.KeyboardEvent) {
-        let shift = getStepForKey(baseStep, getHorizontalStepKeys(ev as any as KeyboardEvent));
-        const rawValue = constrainRange(mapRange(value + shift, minValue, maxValue, 0, 100), 0, 100);
+    function onKeyDown(ev: React.KeyboardEvent | KeyboardEvent) {
+        let shiftH = getStepForKey(baseStep, getHorizontalStepKeys(ev as KeyboardEvent));
+        let shiftV = getStepForKey(baseStep, getVerticalStepKeys(ev as KeyboardEvent));
+        const rawValue = constrainRange(mapRange(value + shiftH + shiftV, minValue, maxValue, 0, 100), 0, 100);
         valueSet(rawValue);
     }
 
