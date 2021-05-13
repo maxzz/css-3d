@@ -53,13 +53,8 @@ const SliderView: React.FC<SliderProps> = (props) => {
             const pos = {
                 x: ev.pageX - (((win && win.scrollX) || 0) + rect.left),
                 y: ev.pageY - (((win && win.scrollY) || 0) + rect.top),
-                w: rect.width,
-                h: rect.height,
             };
-
             const rawValue = mapRange(constrainRange(pos.x, 0, rect.width), 0, rect.width, minValue, maxValue);
-
-            console.log(rawValue);
             valueSet(rawValue);
         }
 
