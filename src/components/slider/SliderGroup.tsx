@@ -5,7 +5,7 @@ import './slider.scss';
 function SliderGroup() {
     const [value, valueSet] = React.useState(40);
     return (
-        <div className="tp-vars tp-rotv custom-vars" style={{'--tp-base-background-color': 'bg-purple-500'} as React.CSSProperties}>
+        <div className="tp-vars tp-rotv custom-vars" style={{'--tp-base-background-color': 'red'} as React.CSSProperties}>
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
