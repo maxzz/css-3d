@@ -19,11 +19,32 @@ function constrainRange(value: number, min: number, max: number): number {
 	return Math.min(Math.max(value, min), max);
 }
 
+interface StepKeys {
+	altKey: boolean;
+	downKey: boolean;
+	shiftKey: boolean;
+	upKey: boolean;
+}
+
+function getStepForKey(baseStep: number, keys: StepKeys): number {
+	const step = baseStep * (keys.altKey ? 0.1 : 1) * (keys.shiftKey ? 10 : 1);
+	return keys.upKey ? +step : keys.downKey ? -step : 0;
+}
+
+function getVerticalStepKeys(ev: KeyboardEvent): StepKeys {
+	return { altKey: ev.altKey, downKey: ev.key === 'ArrowDown', shiftKey: ev.shiftKey, upKey: ev.key === 'ArrowUp' };
+}
+
+function getHorizontalStepKeys(ev: KeyboardEvent): StepKeys {
+	return { altKey: ev.altKey, downKey: ev.key === 'ArrowLeft', shiftKey: ev.shiftKey, upKey: ev.key === 'ArrowRight' };
+}
+
 export type InputValue = {
     value: number,
     minValue?: number,
     maxValue?: number,
-    step?: number,
+    baseStep?: number,
+    digits?: number, // number of digits after point
 }
 
 type SliderViewProps = InputValue & {
@@ -36,10 +57,11 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
         valueSet,
         minValue = 0,
         maxValue = 200,
-        step = 1,
+        baseStep = 1,
+        digits = 0,
     } = props;
     const viewValue = constrainRange(mapRange(value, minValue, maxValue, 0, 100), 0, 100);
-    
+
     const tracker = React.useRef<HTMLDivElement>(null);
 
     function onMouseDown(ev: React.MouseEvent) {
@@ -67,8 +89,14 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
         }
     } //onMouseDown()
 
+    function onKeyDown(ev: React.KeyboardEvent) {
+        let shift = getStepForKey(baseStep, getHorizontalStepKeys(ev as any as KeyboardEvent));
+        const rawValue = constrainRange(mapRange(value + shift, minValue, maxValue, 0, 100), 0, 100);
+        valueSet(rawValue);
+    }
+
     return (
-        <div className="tp-sldv">
+        <div className="tp-sldv" onKeyDown={onKeyDown}>
             <div className="tp-sldv_t" tabIndex={0} ref={tracker} onMouseDown={onMouseDown}>
                 <div className="tp-sldv_k" style={{ width: viewValue }}>
                 </div>
