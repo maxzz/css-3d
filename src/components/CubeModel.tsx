@@ -1,7 +1,23 @@
 import React from 'react';
 import { hexaToRgba } from '../colors';
 
-function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number, color?: string}) {
+type CubeModelProps = {
+    width: number;
+    height: number;
+    depth: number;
+    rotateX: number;
+    rotateY: number;
+    color?: string;
+};
+
+function CubeModel(props: CubeModelProps) {
+    const {
+        width = 230,
+        height = 350,
+        depth = 100,
+        rotateX,
+        rotateY,
+        color} = props;
 
     let colorValue = hexaToRgba(color || '#1879da80') || { r: 0x18, g: 0x79, b: 0xda, a: 1 }; // #187979
     let red = colorValue.r;
@@ -10,10 +26,6 @@ function CubeModel({rotateX, rotateY, color}: {rotateX: number, rotateY: number,
     let opacity = colorValue.a;
 
     let shadowRatio = 5;
-
-    let width = 230;
-    let height = 350;
-    let depth = 100;
 
     function makeShade(n: number): string {
         return `rgba(${red - n * shadowRatio}, ${green - n * shadowRatio}, ${blue - n * shadowRatio}, ${opacity})`;
