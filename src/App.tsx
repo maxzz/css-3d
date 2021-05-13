@@ -15,14 +15,14 @@ function App() {
                         <LogoPlay />
                     </div>
                     <div className="ml-4 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none">CSS 3D shapes</div>
-                    <div className="flex-1 bg-gray-300">
-                        <div className="border-green-600 border-2"><input type="range" />1</div>
-                        <input type="range" />
-                        <input type="range" />
+                    <div className="flex-1">
+                        <SliderGroup />
                     </div>
-                    <MovementControl />
+                    <div className="flex-0">
+                        <MovementControl />
+                    </div>
                 </div>
-                <SliderGroup />
+                
                 <div className="flex-1 relative">
                     <CubeView />
                 </div>

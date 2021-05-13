@@ -17,11 +17,11 @@ function SliderGroup() {
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
-                    <div className="tp-lblv_l">label</div>
+                    <div className="tp-lblv_l w-14">Width</div>
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <SliderView value={valueW} valueSet={valueWSet} maxValue={50} />
+                                <SliderView value={valueW} valueSet={valueWSet} maxValue={350} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
@@ -35,11 +35,11 @@ function SliderGroup() {
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
-                    <div className="tp-lblv_l">label</div>
+                    <div className="tp-lblv_l w-14">Height</div>
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <SliderView value={valueH} valueSet={valueHSet} maxValue={50} />
+                                <SliderView value={valueH} valueSet={valueHSet} maxValue={350} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">
@@ -53,11 +53,11 @@ function SliderGroup() {
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
-                    <div className="tp-lblv_l">label</div>
+                    <div className="tp-lblv_l w-14">Deep</div>
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
-                                <SliderView value={valueD} valueSet={valueDSet} maxValue={50} />
+                                <SliderView value={valueD} valueSet={valueDSet} maxValue={350} />
                             </div>
                             <div className="tp-sldtxtv_t">
                                 <div className="tp-txtv tp-txtv-num">

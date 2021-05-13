@@ -40,8 +40,9 @@ function MovementControl() {
                 border rounded-md border-gray-400
                 cursor-pointer relative`
             }
-            onMouseDown={(event: React.MouseEvent) => {
-                downPt.current = { x: event.clientX + rotation.y, y: event.clientY + rotation.x };
+            onMouseDown={(ev: React.MouseEvent) => {
+                ev.preventDefault();
+                downPt.current = { x: ev.clientX + rotation.y, y: ev.clientY + rotation.x };
                 rotActiveSet(true);
             }}
             onClick={(event: React.MouseEvent) => {

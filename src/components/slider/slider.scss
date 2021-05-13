@@ -344,7 +344,7 @@ $z-index-picker: 1000;
 
 .custom-vars {
     // --tp-base-background-color: #e5e7eb;
-    --tp-base-background-color: rgba(174, 0, 255, 0.164);
+    --tp-base-background-color: transparent; //rgba(174, 0, 255, 0.164)
     --tp-label-foreground-color: rgba(0, 0, 0, 0.7);
     --tp-input-foreground-color: hsl(233, 8%, 21%);
 }
