@@ -343,7 +343,8 @@ $z-index-picker: 1000;
 }
 
 .custom-vars {
-    --tp-base-background-color: red;
+    --tp-base-background-color: #e5e7eb;
+
     // --bs-br: var(--tp-base-border-radius-v3, 6px);
     // --bs-bg: var(--tp-base-background-color, #e5e7eb); // bg-gray-100 = #e5e7eb //#2f3137 = hsl(225, 8%, 20%)
     // --bs-sh: var(--tp-base-shadow-color, rgba(0, 0, 0, 0.2));
