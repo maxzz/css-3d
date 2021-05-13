@@ -1,16 +1,14 @@
 import React from 'react';
 import SliderView, { NumberFormatter } from './SliderView';
 import './slider.scss';
-import { atom, useAtom } from 'jotai';
-
-const cubeW = atom(0);
-const cubeH = atom(0);
-const cubeD = atom(0);
+import { useAtom } from 'jotai';
+import { cubeD, cubeH, cubeW } from '../../atoms';
 
 function SliderGroup() {
     const [valueW, valueWSet] = useAtom(cubeW);
     const [valueH, valueHSet] = useAtom(cubeH);
     const [valueD, valueDSet] = useAtom(cubeD);
+    
     const digits = 0;
     return (
         <div className="tp-vars tp-rotv custom-vars">
