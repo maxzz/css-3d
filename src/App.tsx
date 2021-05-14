@@ -31,10 +31,11 @@ function App() {
                         <div className="flex">
                             <SliderGroup />
                             {/* Movement control */}
-                            <div className="flex-0 my-4 ml-1 mr-5">
+                            <div className="flex-0 my-2 ml-1 mr-5 relative">
                                 <MovementControl />
-                                <div className="text-[.5rem]">
-                                    x: {rotation.y} y: {rotation.x}
+                                <div className="text-[.5rem] absolute w-full flex justify-center space-x-1">
+                                    <div className="w">x: {rotation.y}</div>
+                                    <div className="w">y: {rotation.x}</div>
                                 </div>
                             </div>
                         </div>
