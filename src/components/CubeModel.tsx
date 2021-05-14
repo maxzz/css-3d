@@ -10,7 +10,7 @@ type CubeModelProps = {
     color?: string;
 };
 
-function getStyles(cubeProps: CubeModelProps) {
+export function getCubeStyles(cubeProps: CubeModelProps) {
     const {
         width = 230,
         height = 350,
@@ -76,7 +76,7 @@ function getStyles(cubeProps: CubeModelProps) {
 }
 
 function CubeModel(props: CubeModelProps) {
-    const styles = getStyles(props)
+    const styles = getCubeStyles(props)
     return (
         <div
             className="absolute top-1/2 left-1/2 select-none"
