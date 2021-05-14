@@ -35,7 +35,7 @@ function App() {
                             </div>
                         </div>
 
-                        <div className="mt-1">
+                        <div className="-mt-2 pl-2">
                             <label className="font-mono text-[.7rem] text-gray-500 flex items-center">
                                 <input type="checkbox" checked={showGen} onChange={(ev) => showGenSet(ev.target.checked)} />
                                 <span className="ml-1">Show generated</span>
