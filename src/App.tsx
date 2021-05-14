@@ -30,7 +30,7 @@ function App() {
                         <div className="flex">
                             <SliderGroup />
                             {/* Movement control */}
-                            <div className="flex-0 my-4 ml-1 mr-2">
+                            <div className="flex-0 my-4 ml-1 mr-5">
                                 <MovementControl />
                             </div>
                         </div>
