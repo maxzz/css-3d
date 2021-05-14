@@ -10,21 +10,25 @@ function CubeView() {
     const [height] = useAtom(cubeHAtom);
     const [depth] = useAtom(cubeDAtom);
 
-    const styles = getCubeStyles({
-        width,
-        height,
-        depth,
-        rotateX: rotation.x,
-        rotateY: rotation.y,
-        color: '#ff000080',
-    });
+    function showSource() {
+        const styles = getCubeStyles({
+            width,
+            height,
+            depth,
+            rotateX: rotation.x,
+            rotateY: rotation.y,
+            color: '#ff000080',
+        });
+    
+        // convert JSON to CSS
+        let text = JSON.stringify(styles, null, 4)
+            .replace(/"/g, '')
+            .replace(/,$/mg, ';')
+            .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
+            .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
 
-    // convert JSON to CSS
-    let text = JSON.stringify(styles, null, 4)
-        .replace(/"/g, '')
-        .replace(/,$/mg, ';')
-        .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
-        .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
+        return text;
+    }
 
     return (
         <div className="relative h-full">
@@ -32,7 +36,7 @@ function CubeView() {
             {/* <div className="px-4">x:{rotation.x} y:{rotation.y}</div> */}
             <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700">
                 <pre>
-                    {text}
+                    {showSource()}
                 </pre>
             </div>
         </div>
