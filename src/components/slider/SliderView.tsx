@@ -40,8 +40,7 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
                 x: ev.pageX - (((win && win.scrollX) || 0) + rect.left),
                 y: ev.pageY - (((win && win.scrollY) || 0) + rect.top),
             };
-            const rawValue = mapRange(constrainRange(pos.x, 0, rect.width), 0, rect.width, minValue, maxValue);
-            valueSet(rawValue);
+            valueSet(mapRange(constrainRange(pos.x, 0, rect.width), 0, rect.width, minValue, maxValue));
         }
 
         function onDocumentMouseUp(ev: MouseEvent) {
@@ -51,10 +50,8 @@ const SliderView: React.FC<SliderViewProps> = (props) => {
     } //onMouseDown()
 
     function onKeyDown(ev: React.KeyboardEvent | KeyboardEvent) {
-        let shiftH = getStepForKey(baseStep, getHorizontalStepKeys(ev as KeyboardEvent));
-        let shiftV = getStepForKey(baseStep, getVerticalStepKeys(ev as KeyboardEvent));
-        const rawValue = constrainRange(mapRange(value + shiftH + shiftV, minValue, maxValue, 0, 100), 0, 100);
-        valueSet(rawValue);
+        let shift = getStepForKey(baseStep, getHorizontalStepKeys(ev as KeyboardEvent)) + getStepForKey(baseStep, getVerticalStepKeys(ev as KeyboardEvent));
+        shift && valueSet(constrainRange(value + shift, minValue, maxValue));
     }
 
     return (

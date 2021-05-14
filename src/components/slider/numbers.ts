@@ -18,6 +18,7 @@ export function constrainRange(value: number, min: number, max: number): number 
 }
 
 export interface StepKeys {
+    ctrlKey: boolean;
     altKey: boolean;
     shiftKey: boolean;
     downKey: boolean;
@@ -25,14 +26,14 @@ export interface StepKeys {
 }
 
 export function getStepForKey(baseStep: number, keys: StepKeys): number {
-    const step = baseStep * (keys.altKey ? 0.1 : 1) * (keys.shiftKey ? 10 : 1);
+    const step = baseStep * (keys.altKey || keys.ctrlKey ? 0.1 : 1) * (keys.shiftKey ? 10 : 1);
     return keys.upKey ? +step : keys.downKey ? -step : 0;
 }
 
 export function getVerticalStepKeys(ev: KeyboardEvent): StepKeys {
-    return { altKey: ev.altKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowDown', upKey: ev.key === 'ArrowUp' };
+    return { altKey: ev.altKey, ctrlKey: ev.ctrlKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowDown', upKey: ev.key === 'ArrowUp' };
 }
 
 export function getHorizontalStepKeys(ev: KeyboardEvent): StepKeys {
-    return { altKey: ev.altKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowLeft', upKey: ev.key === 'ArrowRight' };
+    return { altKey: ev.altKey, ctrlKey: ev.ctrlKey, shiftKey: ev.shiftKey, downKey: ev.key === 'ArrowLeft', upKey: ev.key === 'ArrowRight' };
 }
