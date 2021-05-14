@@ -347,8 +347,15 @@ $z-index-picker: 1000;
     --tp-base-background-color: transparent; //rgba(174, 0, 255, 0.164)
     --tp-base-shadow-color: transparent;
     --tp-label-foreground-color: rgba(0, 0, 0, 0.7);
-    --tp-input-foreground-color: hsl(233, 8%, 21%);
+    --tp-input-foreground-color: rgba(0, 0, 0, 0.7);
     --tp-input-background-color: transparent;
+
+    --tp-slider-thumb: #5f828c57;
+    --tp-slider-thumb-h: #52acc557;
+    --tp-slider-thumb-f: #5f828c57;
+    --tp-slider-thumb-a: #5f828c57;
+    --tp-slider-line-before: rgb(87, 87, 87);
+    --tp-slider-line-after: rgb(216, 216, 216);
 }
 
 // slider custom colors
@@ -356,24 +363,29 @@ $z-index-picker: 1000;
 .#{$prefix}-sldv {
     &_t {
         &::before {
-            background-color: var(--in-bg);
+            background-color: var(--tp-slider-line-after); // was --in-bg; element after thumb
         }
     }
     &_k {
         &::before {
-            background-color: var(--in-fg);
+            background-color: var(--tp-slider-line-before); // was --in-fg; element before thumb
         }
         &::after {
-            background-color: var(--btn-bg);
+            background-color: var(--tp-slider-thumb); // was --btn-bg; thumb
         }
     }
     &_t:hover &_k::after {
-        background-color: var(--btn-bg-h);
+        background-color: var(--tp-slider-thumb-h); // was --btn-bg-h; thumb hover
     }
     &_t:focus &_k::after {
-        background-color: var(--btn-bg-f);
+        background-color: var(--tp-slider-thumb-f); // was --btn-bg-f; thumb focus
     }
     &_t:active &_k::after {
-        background-color: var(--btn-bg-a);
+        background-color: var()--tp-slider-thumb-a; // was --btn-bg-a; thumb active
     }
+}
+
+.tp-txtv.tp-txtv-num .tp-txtv_i {
+    text-align: left;
+    padding-left: 0;
 }
