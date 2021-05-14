@@ -23,7 +23,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueW, digits)} readOnly />
+                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueW, digits)} onChange={(ev) => valueWSet(parseInt(ev.target.value, 10))} />
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueH, digits)} readOnly />
+                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueH, digits)} onChange={(ev) => valueHSet(parseInt(ev.target.value, 10))} />
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueD, digits)} readOnly />
+                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueD, digits)} onChange={(ev) => valueDSet(parseInt(ev.target.value, 10))} />
                                 </div>
                             </div>
                         </div>
