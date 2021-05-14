@@ -6,3 +6,5 @@ export const rotActiveAtom = atom(false);
 export const cubeWAtom = atom(250);
 export const cubeHAtom = atom(60);
 export const cubeDAtom = atom(300);
+
+export const showGeneratedAtom = atom(true);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom } from '../atoms';
+import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../atoms';
 import CubeModel, { getCubeStyles } from './CubeModel';
 
 function CubeView() {
@@ -9,6 +9,8 @@ function CubeView() {
     const [width] = useAtom(cubeWAtom);
     const [height] = useAtom(cubeHAtom);
     const [depth] = useAtom(cubeDAtom);
+
+    const [showGenerated] = useAtom(showGeneratedAtom);
 
     function showSource() {
         const styles = getCubeStyles({
@@ -36,7 +38,7 @@ function CubeView() {
             {/* <div className="px-4">x:{rotation.x} y:{rotation.y}</div> */}
             <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700">
                 <pre>
-                    {showSource()}
+                    {showGenerated && showSource()}
                 </pre>
             </div>
         </div>
