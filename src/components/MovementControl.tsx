@@ -35,7 +35,7 @@ function MovementControl() {
     return (
         <div
             ref={containerRef}
-            className={`w-12 h-12 my-4 ml-auto mr-8 p-2
+            className={`w-12 h-12 p-2
                 text-gray-700 bg-gray-400 active:bg-gray-200
                 border rounded-md border-gray-400
                 cursor-pointer relative`

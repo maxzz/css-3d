@@ -26,18 +26,21 @@ function App() {
 
                     {/* Controls */}
                     <div className="flex-0 py-2">
-                        <SliderGroup />
+
+                        <div className="flex">
+                            <SliderGroup />
+                            {/* Movement control */}
+                            <div className="flex-0 my-4 ml-1 mr-2">
+                                <MovementControl />
+                            </div>
+                        </div>
+
                         <div className="mt-1">
                             <label className="font-mono text-[.7rem] text-gray-500 flex items-center">
                                 <input type="checkbox" checked={showGen} onChange={(ev) => showGenSet(ev.target.checked)} />
                                 <span className="ml-1">Show generated</span>
                             </label>
                         </div>
-                    </div>
-
-                    {/* Movement control */}
-                    <div className="flex-0">
-                        <MovementControl />
                     </div>
                 </div>
                 
