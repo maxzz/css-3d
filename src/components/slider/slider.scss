@@ -350,3 +350,30 @@ $z-index-picker: 1000;
     --tp-input-foreground-color: hsl(233, 8%, 21%);
     --tp-input-background-color: transparent;
 }
+
+// slider custom colors
+
+.#{$prefix}-sldv {
+    &_t {
+        &::before {
+            background-color: var(--in-bg);
+        }
+    }
+    &_k {
+        &::before {
+            background-color: var(--in-fg);
+        }
+        &::after {
+            background-color: var(--btn-bg);
+        }
+    }
+    &_t:hover &_k::after {
+        background-color: var(--btn-bg-h);
+    }
+    &_t:focus &_k::after {
+        background-color: var(--btn-bg-f);
+    }
+    &_t:active &_k::after {
+        background-color: var(--btn-bg-a);
+    }
+}
