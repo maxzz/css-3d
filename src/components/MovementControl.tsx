@@ -41,12 +41,14 @@ function MovementControl() {
                 cursor-pointer relative`
             }
             onMouseDown={(ev: React.MouseEvent) => {
-                ev.preventDefault();
-                downPt.current = { x: ev.clientX + rotation.y, y: ev.clientY + rotation.x };
-                rotActiveSet(true);
+                if (!ev.ctrlKey) {
+                    ev.preventDefault();
+                    downPt.current = { x: ev.clientX + rotation.y, y: ev.clientY + rotation.x };
+                    rotActiveSet(true);
+                }
             }}
-            onClick={(event: React.MouseEvent) => {
-                if (event.ctrlKey) {
+            onClick={(ev: React.MouseEvent) => {
+                if (ev.ctrlKey) {
                     rotationSet({ x: 0, y: 0 });
                 }
             }}
