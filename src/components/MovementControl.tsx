@@ -11,12 +11,22 @@ function MovementControl() {
 
     useEffect(() => {
         if (rotActive && containerRef.current) {
-            function onMove(event: MouseEvent) {
-                const newRot = {
-                    x: event.clientX - downPt.current!.x,
-                    y: event.clientY - downPt.current!.y,
+            let prev;
+            function onMove(ev: MouseEvent) {
+                const rot = {
+                    x: ev.clientX - downPt.current!.x,
+                    y: ev.clientY - downPt.current!.y,
                 };
-                rotationSet({ x: newRot.y, y: newRot.x });
+                if (ev.shiftKey) {
+                    if (rot.x > rot.y) {
+                        rot.y = downPt.current!.y;
+                    } else {
+                        rot.x = downPt.current!.x;
+                    }
+                }
+                //console.log('shift', ev.shiftKey);
+
+                rotationSet({ x: rot.y, y: rot.x });
             }
             function onDone() {
                 rotActiveSet(false);
