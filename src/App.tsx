@@ -14,8 +14,10 @@ function App() {
                     <div className="w-32 pt-2">
                         <LogoPlay />
                     </div>
-                    <div className="ml-4 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none">CSS 3D shapes</div>
-                    <div className="flex-1">
+                    <div className="flex-1 ml-4 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none">
+                        CSS 3D shapes
+                    </div>
+                    <div className="flex-0">
                         <SliderGroup />
                     </div>
                     <div className="flex-0">
