@@ -19,9 +19,9 @@ function MovementControl() {
                 };
                 if (ev.shiftKey) {
                     if (rot.x > rot.y) {
-                        rot.y = downPt.current!.y;
+                        rot.y = rotation.y;
                     } else {
-                        rot.x = downPt.current!.x;
+                        rot.x = rotation.x;
                     }
                 }
                 //console.log('shift', ev.shiftKey);
