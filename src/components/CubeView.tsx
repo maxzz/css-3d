@@ -20,7 +20,11 @@ function CubeView() {
     });
 
     // convert JSON to CSS
-    let text = JSON.stringify(styles, null, 4).replace(/"/g, '').replace(/,$/mg, ';').replace(/((?:\r?\n)\s*)};/mg, ';$1}');
+    let text = JSON.stringify(styles, null, 4)
+        .replace(/"/g, '')
+        .replace(/,$/mg, ';')
+        .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
+        .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
 
     return (
         <div className="relative h-full">
