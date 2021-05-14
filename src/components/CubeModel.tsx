@@ -11,12 +11,16 @@ type CubeModelProps = {
 };
 
 export function getCubeStyles(cubeProps: CubeModelProps) {
-    const {
+    let {
         width = 230,
         height = 350,
         depth = 100,
         color,
     } = cubeProps;
+
+    width = +width.toFixed(2);
+    height = +height.toFixed(2);
+    depth = +depth.toFixed(2);
 
     let colorValue = hexaToRgba(color || '#1879da80') || { r: 0x18, g: 0x79, b: 0xda, a: 1 }; // #187979
     let red = colorValue.r;
