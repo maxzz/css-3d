@@ -5,10 +5,11 @@ import CubeView from './components/CubeView';
 import LogoPlay from './components/LogoPlay';
 import SliderGroup from './components/slider/SliderGroup';
 import { useAtom } from 'jotai';
-import { showGeneratedAtom } from './atoms';
+import { rotAtom, showGeneratedAtom } from './atoms';
 
 function App() {
     const [showGen, showGenSet] = useAtom(showGeneratedAtom);
+    const [rotation] = useAtom(rotAtom);
     return (
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
@@ -32,6 +33,9 @@ function App() {
                             {/* Movement control */}
                             <div className="flex-0 my-4 ml-1 mr-5">
                                 <MovementControl />
+                                <div className="text-[.5rem]">
+                                    x: {rotation.y} y: {rotation.x}
+                                </div>
                             </div>
                         </div>
 

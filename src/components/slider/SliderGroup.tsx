@@ -5,7 +5,7 @@ import { useAtom } from 'jotai';
 import { cubeDAtom, cubeHAtom, cubeWAtom } from '../../atoms';
 import { NumberFormatter } from './numbers';
 
-const MAX_VALUE = 350;
+const MAX_VALUE = 700;
 
 function SliderGroup() {
     const [valueW, valueWSet] = useAtom(cubeWAtom);
