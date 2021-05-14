@@ -1,8 +1,9 @@
 import React from 'react';
-import SliderView, { NumberFormatter } from './SliderView';
+import SliderView from './SliderView';
 import './slider.scss';
 import { useAtom } from 'jotai';
 import { cubeDAtom, cubeHAtom, cubeWAtom } from '../../atoms';
+import { NumberFormatter } from './numbers';
 
 const MAX_VALUE = 350;
 
