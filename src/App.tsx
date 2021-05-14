@@ -12,14 +12,20 @@ function App() {
     return (
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
+                {/* Header */}
                 <div className="flex items-center bg-gray-200 shadow-md">
+                    {/* Logo */}
                     <div className="w-32 pt-2">
                         <LogoPlay />
                     </div>
+
+                    {/* Title */}
                     <div className="flex-1 ml-4 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none">
                         CSS 3D shapes
                     </div>
-                    <div className="flex-0">
+
+                    {/* Controls */}
+                    <div className="flex-0 py-2">
                         <SliderGroup />
                         <div className="mt-1">
                             <label className="font-mono text-[.7rem] text-gray-500 flex items-center">
@@ -28,11 +34,14 @@ function App() {
                             </label>
                         </div>
                     </div>
+
+                    {/* Movement control */}
                     <div className="flex-0">
                         <MovementControl />
                     </div>
                 </div>
                 
+                {/* Model */}
                 <div className="flex-1 relative">
                     <CubeView />
                 </div>
