@@ -79,7 +79,7 @@ function MovementControl() {
                 </div>
                 :
                 <div className="w-12 h-12 p-2 text-gray-700">
-                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" >
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3" >
                         <ellipse cx="50" cy="50" rx="44.4" ry="13.2" />
                         <ellipse cx="50" cy="50" rx="12.3" ry="44.4" />
                         <path d="M53.7 54.3l8.6-8.6 5 7.5M29.9 66.9l-8.2-6.7 9.1-4.4" />
