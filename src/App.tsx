@@ -21,7 +21,7 @@ function App() {
                     </div>
 
                     {/* Title */}
-                    <div className="flex-1 ml-4 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none"
+                    <div className="flex-1 ml-2 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none"
                         style={{textShadow: '1px 1px #00000040'}}
                     >
                         CSS 3D shapes
@@ -42,7 +42,7 @@ function App() {
                             </div>
                         </div>
 
-                        <div className="-mt-2 pl-2">
+                        <div className="pl-2">
                             <label className="font-mono text-[.7rem] text-gray-500 flex items-center">
                                 <input type="checkbox" checked={showGen} onChange={(ev) => showGenSet(ev.target.checked)} />
                                 <span className="ml-1">Show generated</span>
