@@ -1,0 +1,5 @@
+.dark {
+    /*min-height: 100vh;*/
+    background: radial-gradient(#3d3c41, #262429), url(https://i.stack.imgur.com/PEnJm.png);
+    background-blend-mode: multiply;
+}

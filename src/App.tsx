@@ -14,7 +14,7 @@ function App() {
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
                 {/* Header */}
-                <div className="flex items-center bg-gray-200 shadow-md">
+                <div className="flex items-center bg-gray-200 shadow-md dark">
                     {/* Logo */}
                     <div className="w-8 h-8 ml-2">
                         <LogoPlay />
