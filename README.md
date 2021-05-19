@@ -2,6 +2,8 @@
 
 Experimanting with pseudo-3D shapes.
 
+![](src/assets/previews/2021-05-19_15-28-47.png)
+
 #### Inspirations, references, credits
 
 [Tweakpane](https://github.com/cocopon/tweakpane)
