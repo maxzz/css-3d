@@ -115,6 +115,8 @@ $z-index-picker: 1000;
         opacity: 0.5;
     }
 
+    $slider-bar-height: 1px;
+
     &_t {
         position: relative;
         box-sizing: border-box;
@@ -129,7 +131,7 @@ $z-index-picker: 1000;
             background-color: var(--in-bg);
             border-radius: 1px;
 
-            height: 2px;
+            height: $slider-bar-height;
 
             position: absolute;
             left: 0;
@@ -151,7 +153,7 @@ $z-index-picker: 1000;
             background-color: var(--in-fg);
             border-radius: 1px;
 
-            height: 2px;
+            height: $slider-bar-height;
 
             position: absolute;
             left: 0;
@@ -343,6 +345,8 @@ $z-index-picker: 1000;
 }
 
 .custom-vars {
+    --tp-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
     // --tp-base-background-color: #e5e7eb;
     --tp-base-background-color: transparent; //rgba(174, 0, 255, 0.164)
     --tp-base-shadow-color: transparent;
@@ -356,6 +360,11 @@ $z-index-picker: 1000;
     --tp-slider-thumb-a: #5f828c57;
     --tp-slider-line-before: rgb(87, 87, 87);
     --tp-slider-line-after: rgb(216, 216, 216);
+}
+
+.custom-vars-dark {
+    --tp-input-foreground-color: #6b7280; //#5f9367
+    --tp-label-foreground-color: #6b7280; //#5f9367
 }
 
 // slider custom colors

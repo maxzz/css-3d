@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import MovementControl from './components/MovementControl';
 import CubeView from './components/CubeView';
 import LogoPlay from './components/LogoPlay';
@@ -21,7 +21,8 @@ function App() {
                     </div>
 
                     {/* Title */}
-                    <div className="flex-1 ml-2 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none"
+                    <div
+                        className="flex-1 ml-2 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none"
                         style={{textShadow: '1px 1px #00000040'}}
                     >
                         CSS 3D shapes
@@ -35,7 +36,7 @@ function App() {
                             {/* Movement control */}
                             <div className="flex-0 my-2 ml-1 mr-5 relative">
                                 <MovementControl />
-                                <div className="text-[.5rem] absolute w-full flex justify-center space-x-1">
+                                <div className="text-[.5rem] absolute w-full flex justify-center space-x-1 text-dark-label">
                                     <div className="w">x: {rotation.y}</div>
                                     <div className="w">y: {rotation.x}</div>
                                 </div>

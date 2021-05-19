@@ -20,7 +20,7 @@ function SliderGroup() {
 
     const digits = 0;
     return (
-        <div className="tp-vars tp-rotv custom-vars self-center">
+        <div className="tp-vars tp-rotv self-center custom-vars custom-vars-dark">
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
