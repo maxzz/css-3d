@@ -39,7 +39,7 @@ function CubeView() {
                     {showSource()}
                 </pre>
             </div>}
-            <div className={`z-10 absolute ${showGenerated ? 'top-28 right-28 transform scale-[.2]' : 'top-1/2 right-1/2'}`}>
+            <div className={`z-10 absolute transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
                 <CubeModel rotateX={rotation.x} rotateY={rotation.y} width={width} height={height} depth={depth} />
             </div>
             {/* <div className="px-4">x:{rotation.x} y:{rotation.y}</div> */}
