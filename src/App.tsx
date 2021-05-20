@@ -22,8 +22,8 @@ function App() {
 
                     {/* Title */}
                     <div
-                        className="flex-1 ml-2 justify-self-center text-xl tracking-tighter uppercase text-pink-700 select-none"
-                        style={{textShadow: '1px 1px #00000040'}}
+                        className="flex-1 ml-2 justify-self-center text-xl tracking-tighter uppercase text-gray-500 select-none"
+                        style={{textShadow: '#1ec13652 2px 2px 2px'}}
                     >
                         CSS 3D shapes
                     </div>
