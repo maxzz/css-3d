@@ -46,11 +46,12 @@ function MovementControl() {
         <div
             ref={containerRef}
             className={`
-                text-gray-800
-                bg-gradient-to-b from-gray-700 via-green-900 to-gray-700 
-                hover:from-gray-600 hover:to-gray-600 
-                transform hover:scale-[1.05] active:scale-[.95]
-                transition-all
+                bg-gradient-to-b 
+                from-gray-900 via-green-900 to-gray-900
+                active:from-gray-900 active:via-gray-700 active:to-gray-900
+                transform
+                active:scale-95
+                transition-all duration-100
                 border rounded-md border-gray-400
                 cursor-pointer relative`
             }
