@@ -11,8 +11,3 @@ declare global {
         }
     }
 }
-
-// declare module 'jsx-native-events' {
-//     // import nativeEvents from 'jsx-native-events';
-//     // export default nativeEvents;    
-// }
