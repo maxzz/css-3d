@@ -2,6 +2,7 @@ import React from 'react';
 import { useAtom } from 'jotai';
 import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../atoms';
 import CubeModel, { getCubeStyles } from './CubeModel';
+import CopyButton from './CopyButton';
 
 function CubeView() {
     const [rotation] = useAtom(rotAtom);
@@ -35,7 +36,8 @@ function CubeView() {
     return (
         <div className="relative h-full">
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
-                <pre>
+                <CopyButton forId="generated-source" />
+                <pre id="generated-source">
                     {showSource()}
                 </pre>
             </div>}
