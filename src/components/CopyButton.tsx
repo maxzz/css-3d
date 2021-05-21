@@ -11,23 +11,17 @@ function CopyButton(props: { className?: string; forId: string; }) {
         function copied(event: Event) {
             const notice = (event.target! as HTMLElement).querySelector('.notice') as HTMLElement;
             notice.hidden = false;
-            setTimeout(function () {
-                notice.hidden = true;
-            }, 1000);
-
-            console.log('bbb', event);
+            setTimeout(() => notice.hidden = true, 1000);
         }
-        console.log('ccc');
         ref.current?.addEventListener('clipboard-copy', copied, false);
         return () => {
-            console.log('ddd');
             ref.current?.removeEventListener('clipboard-copy', copied, false);
         }
     }, [ref.current]);
     return (
-        <clipboard-copy ref={ref} class={className} for={forId}>
+        <clipboard-copy ref={ref} class={`${className} relative select-none`} for={forId}>
             Copy
-            <span className="notice" hidden>Copied!</span>
+            <div className="notice px-2 py-1 absolute top-1/2 left-[-230%] transform -translate-y-1/2 rounded bg-green-600 text-green-100 text-xs" hidden>Copied!</div>
         </clipboard-copy>
     );
 }
