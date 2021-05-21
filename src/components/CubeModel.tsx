@@ -1,5 +1,5 @@
 import React from 'react';
-import { hexaToRgba } from '../colors';
+import { hexaToRgba } from '../utils/colors';
 
 type CubeModelProps = {
     width: number;
