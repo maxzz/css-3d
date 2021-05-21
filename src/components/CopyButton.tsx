@@ -1,9 +1,13 @@
 import React from 'react';
 import '@github/clipboard-copy-element';
 
-function CopyButton(props: {forId: string}) {
+function CopyButton(props: {className?: string; forId: string}) {
+    const {
+        className = "",
+        forId,
+    } = props;
     return (
-        <clipboard-copy for={props.forId}>Copy</clipboard-copy>
+        <clipboard-copy class={className} for={forId}>Copy</clipboard-copy>
     );
 }
 
