@@ -1,5 +1,7 @@
+/** @jsx nativeEvents */
 import React from 'react';
 import '@github/clipboard-copy-element';
+import nativeEvents from 'jsx-native-events';
 
 function CopyButton(props: {className?: string; forId: string}) {
     const {
@@ -7,7 +9,10 @@ function CopyButton(props: {className?: string; forId: string}) {
         forId,
     } = props;
     return (
-        <clipboard-copy class={className} for={forId}>Copy</clipboard-copy>
+        <clipboard-copy class={className} for={forId} onClipboardCopy={() => {console.log('aaa')}}>
+            Copy
+            <span className="notice" hidden>Copied!</span>
+        </clipboard-copy>
     );
 }
 
