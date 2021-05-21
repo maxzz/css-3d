@@ -6,7 +6,6 @@ declare global {
             'clipboard-copy': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
                 class: string;
                 for: string;
-                onEventClipboardCopy: (event: Event) => void
             }, HTMLElement>;
         }
     }

@@ -789,11 +789,6 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsx-native-events@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/jsx-native-events/-/jsx-native-events-2.0.0.tgz#ba94a7a419bdfe25a190709ceae9c6bb0eebb1af"
-  integrity sha512-s4jY2Sd4aYkhcoJLh4i6lzb98cxWvd9iZ8PPj9sFxC62TFrQPcchZeOl0oMgTamMu06/IXTqIjzL14czQsO1Gg==
-
 lodash.toarray@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.toarray/-/lodash.toarray-4.4.0.tgz#24c4bfcd6b2fba38bfd0594db1179d8e9b656561"

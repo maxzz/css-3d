@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "jotai": "^0.16.4",
-    "jsx-native-events": "^2.0.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "svgpath": "^2.3.1"
