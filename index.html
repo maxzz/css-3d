@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS 3D shapes</title>
-  </head>
-  <body>
-    <div id="root"></div>
+</head>
+<body>
+    <style>
+/* CSS */
+
+.cube {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(20deg) rotateY(20deg);
+}
+
+.cube__face {
+    position: absolute;
+}
+
+.cube__f {
+    background: rgba(230, -25, -25, 0.5019607843137255);
+    width: 250px;
+    height: 60px;
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(150px);
+}
+.cube__l {
+    background: rgba(205, -50, -50, 0.5019607843137255);
+    width: 300px;
+    height: 60px;
+    transform: translate(-50%, -50%) rotateY(90deg) translateZ(125px);
+}
+.cube__t {
+    background: rgba(255, 0, 0, 0.5019607843137255);
+    width: 250px;
+    height: 300px;
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(30px);
+}
+.cube__b {
+    background: rgba(155, -100, -100, 0.5019607843137255);
+    width: 250px;
+    height: 300px;
+    transform: translate(-50%, -50%) rotateX(-90deg) translateZ(30px);
+}
+.cube__r {
+    background: rgba(205, -50, -50, 0.5019607843137255);
+    width: 300px;
+    height: 60px;
+    transform: translate(-50%, -50%) rotateY(-90deg) translateZ(125px);
+}
+.cube__k {
+    background: rgba(180, -75, -75, 0.5019607843137255);
+    width: 250px;
+    height: 60px;
+    transform: translate(-50%, -50%) rotateY(180deg) translateZ(150px);
+}
+
+    </style>
+
+    <div class="h-screen flex items-center justify-center">
+        <div class="cube">
+            <div class="cube__face cube__f"></div> <!-- _front_ -->
+            <div class="cube__face cube__l"></div> <!-- _left__ -->
+            <div class="cube__face cube__t"></div> <!-- _top___ -->
+            <div class="cube__face cube__b"></div> <!-- _bottom -->
+            <div class="cube__face cube__r"></div> <!-- _right_ -->
+            <div class="cube__face cube__k"></div> <!-- _back__ -->
+        </div>
+    </div>
+
+    <!-- <div id="root"></div> -->
     <script type="module" src="/src/main.tsx"></script>
-  </body>
+</body>
 </html>
