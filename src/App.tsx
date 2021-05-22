@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import MovementControl from './components/MovementControl';
-import CubeView from './components/CubeView';
+import CubeView from './components/CubePanel';
 import LogoPlay from './components/LogoPlay';
 import SliderGroup from './components/slider/SliderGroup';
 import { useAtom } from 'jotai';

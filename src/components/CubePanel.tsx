@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../atoms';
+import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../atoms';
 import CubeModel, { CubeStyles, getCubeStyles } from './CubeModel';
 import CopyButton from './CopyButton';
 
@@ -49,6 +49,8 @@ function CubeView() {
     const [height] = useAtom(cubeHAtom);
     const [depth] = useAtom(cubeDAtom);
 
+    const [color] = useAtom(colorsAtom);
+
     const [showGenerated] = useAtom(showGeneratedAtom);
 
     function showSource() {
@@ -58,7 +60,7 @@ function CubeView() {
             depth,
             rotateX: rotation.x,
             rotateY: rotation.y,
-            color: '#ff000080',
+            color: color,
         });
 
         return lagacyGenerator(styles, rotation);
@@ -74,7 +76,7 @@ function CubeView() {
             </div>}
             {/* Mini cube */}
             <div className={`z-10 absolute transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
-                <CubeModel rotateX={rotation.x} rotateY={rotation.y} width={width} height={height} depth={depth} />
+                <CubeModel rotateX={rotation.x} rotateY={rotation.y} width={width} height={height} depth={depth} color={color} />
             </div>
         </div>
     );
