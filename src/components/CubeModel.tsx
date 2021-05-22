@@ -37,44 +37,44 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
 
     let f = { //front
         background: makeShade(5),
-        width: `${width}px`,
-        height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(0deg) translateZ(${depth / 2}px)`
+        width: 'var(--width)',
+        height: 'var(--height)',
+        transform: `translate(-50%, -50%) rotateY(0deg) translateZ(calc((var(--depth) / 2)))`
     };
 
     let l = { //left
         background: makeShade(10),
         width: `${depth}px`,
-        height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(90deg) translateZ(${width / 2}px)`
+        height: 'var(--height)',
+        transform: `translate(-50%, -50%) rotateY(90deg) translateZ(calc((var(--width) / 2)))`
     };
 
     let t = { //top
         background: makeShade(0),
-        width: `${width}px`,
+        width: 'var(--width)',
         height: `${depth}px`,
-        transform: `translate(-50%, -50%) rotateX(90deg) translateZ(${height / 2}px)`
+        transform: `translate(-50%, -50%) rotateX(90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let b = { //bottom
         background: makeShade(20),
-        width: `${width}px`,
+        width: 'var(--width)',
         height: `${depth}px`,
-        transform: `translate(-50%, -50%) rotateX(-90deg) translateZ(${height / 2}px)`
+        transform: `translate(-50%, -50%) rotateX(-90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let r = { //right
         background: makeShade(10),
         width: `${depth}px`,
-        height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(-90deg) translateZ(${width / 2}px)`
+        height: 'var(--height)',
+        transform: `translate(-50%, -50%) rotateY(-90deg) translateZ(calc((var(--width) / 2)))`
     };
 
     let k = { //back
         background: makeShade(15),
-        width: `${width}px`,
-        height: `${height}px`,
-        transform: `translate(-50%, -50%) rotateY(180deg) translateZ(${depth / 2}px)`
+        width: 'var(--width)',
+        height: 'var(--height)',
+        transform: `translate(-50%, -50%) rotateY(180deg) translateZ(calc((var(--depth) / 2)))`
     };
 
     return {f, l, t, b, r, k};
@@ -96,8 +96,9 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
     return {
         transformStyle: 'preserve-3d',
         transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        '--width:': `${width}px`,
-        '--height:': `${height}px`,
+        '--width': `${width}px`,
+        '--height': `${height}px`,
+        '--depth': `${depth}px`,
     } as React.CSSProperties;
 }
 
@@ -106,12 +107,7 @@ function CubeModel(props: CubeModelProps) {
     return (
         <div
             className="absolute top-1/2 left-1/2 select-none"
-            style={{
-                transformStyle: 'preserve-3d',
-                transform: `rotateX(${props.rotateX}deg) rotateY(${props.rotateY}deg)`,
-                '--width:': `${styles.width}px`,
-                '--height:': `${styles.height}px`,
-            } as React.CSSProperties}
+            style={getCubeParentStyles(props)}
         >
             <div className="absolute" style={styles.f}></div> {/* _front_ */}
             <div className="absolute" style={styles.l}></div> {/* _left__ */}

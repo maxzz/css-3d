@@ -60,7 +60,7 @@ function SliderGroup() {
             {/* Row */}
             <div className="flex items-center">
                 <div className="tp-lblv">
-                    <div className="tp-lblv_l w-11">Deep</div>
+                    <div className="tp-lblv_l w-11">Depth</div>
                     <div className="tp-lblv_v">
                         <div className="tp-sldtxtv">
                             <div className="tp-sldtxtv_s">
