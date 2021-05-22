@@ -36,11 +36,12 @@ function CubeView() {
     return (
         <div className="relative h-full">
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
-                <CopyButton forId="generated-source" className="absolute top-1 right-1 px-2 py-1 rounded-sm border border-green-700 " />
-                <pre id="generated-source">
+                <CopyButton forId="generated-source" className="absolute top-2 right-2 px-2 py-1 rounded-sm border border-green-700 " />
+                <pre id="generated-source" className="py-1">
                     {showSource()}
                 </pre>
             </div>}
+            {/* Mini cube */}
             <div className={`z-10 absolute transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
                 <CubeModel rotateX={rotation.x} rotateY={rotation.y} width={width} height={height} depth={depth} />
             </div>

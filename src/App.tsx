@@ -14,7 +14,7 @@ function App() {
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
                 {/* Header */}
-                <div className="flex items-center bg-gray-200 shadow-md dark z-10" style={{boxShadow: '0px 1px 4px 1px #99ff8d38'}}>
+                <div className="flex items-center bg-gray-200 shadow-md dark z-10 border-b border-green-800">
                     {/* Logo */}
                     <div className="w-8 h-8 ml-2 flex-none">
                         <LogoPlay />
@@ -34,7 +34,7 @@ function App() {
                         <div className="flex">
                             <SliderGroup />
                             {/* Movement control */}
-                            <div className="flex-0 my-2 ml-1 mr-5 relative">
+                            <div className="flex-0 my-2 ml-1 mr-2 relative">
                                 <MovementControl />
                                 <div className="text-[.5rem] absolute w-full flex justify-center space-x-1 text-dark-label">
                                     <div className="w">x: {rotation.y}</div>
