@@ -14,7 +14,7 @@ function App() {
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
                 {/* Header */}
-                <div className="flex items-center bg-gray-200 shadow-md dark">
+                <div className="flex items-center bg-gray-200 shadow-md dark z-10" style={{boxShadow: '0px 1px 4px 1px #99ff8d38'}}>
                     {/* Logo */}
                     <div className="w-8 h-8 ml-2 flex-none">
                         <LogoPlay />
