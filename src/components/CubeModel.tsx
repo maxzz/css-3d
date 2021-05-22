@@ -9,6 +9,7 @@ type CubeModelProps = {
     color: ColorRGB;
     rotateX: number;
     rotateY: number;
+    shadowRatio: number,
 };
 
 export type CubeStyles = Record<string, Record<string, string | number>>;
@@ -19,13 +20,12 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
         height,
         depth,
         color,
+        shadowRatio,
     } = cubeProps;
 
     width = +width.toFixed(2);
     height = +height.toFixed(2);
     depth = +depth.toFixed(2);
-
-    let shadowRatio = 5;
 
     function makeShade(n: number): string {
         return `rgba(${

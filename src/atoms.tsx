@@ -17,3 +17,5 @@ export const colorsAtom = atom(
         let colorValue = hexaToRgba(color || '#1879da80') || { r: 0x18, g: 0x79, b: 0xda, a: 1 }; // #187979
         return colorValue;
     });
+
+export const shadowRatioAtom = atom(5);
