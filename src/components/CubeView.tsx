@@ -4,6 +4,15 @@ import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../
 import CubeModel, { getCubeStyles } from './CubeModel';
 import CopyButton from './CopyButton';
 
+function objectToCss<T extends Object>(json: T): string {
+    let text = JSON.stringify(json, null, 4)
+        .replace(/"/g, '')
+        .replace(/,$/mg, ';')
+        .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
+        .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
+    return text;
+}
+
 function CubeView() {
     const [rotation] = useAtom(rotAtom);
 
@@ -29,11 +38,11 @@ function CubeView() {
                 .replace(/,$/mg, ';')
                 .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
                 .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
-            return `${key}: ${text}`;
+            return `${key}: ${objectToCss(value)}`;
         });
-        //console.log(JSON.stringify(keys, null, 4));
-        //keys.forEach((v) => console.log(JSON.stringify(`{${v}}`, null, 4)))
-        return JSON.stringify(keys, null, 4);
+        //keys.forEach((v) => console.log(v));
+        console.log(objectToCss(['a','a','c']));
+        
     
         // convert JSON to CSS
         let text = JSON.stringify(styles, null, 4)
