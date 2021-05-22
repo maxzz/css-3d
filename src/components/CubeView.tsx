@@ -4,7 +4,7 @@ import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../
 import CubeModel, { getCubeStyles } from './CubeModel';
 import CopyButton from './CopyButton';
 
-function objectToCss<T extends Object>(json: T): string {
+function objectToCss<T extends object>(json: Exclude<T, any[]>): string {
     let text = JSON.stringify(json, null, 4)
         .replace(/"/g, '')
         .replace(/,$/mg, ';')
@@ -41,8 +41,9 @@ function CubeView() {
             return `${key}: ${objectToCss(value)}`;
         });
         //keys.forEach((v) => console.log(v));
-        console.log(objectToCss(['a','a','c']));
-        
+        //console.log(objectToCss(['a','a','c']));
+        //console.log(objectToCss('aa'));
+        //console.log(objectToCss(5));
     
         // convert JSON to CSS
         let text = JSON.stringify(styles, null, 4)
