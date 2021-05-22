@@ -51,7 +51,12 @@
     transform: translate(-50%, -50%) rotateY(-90deg) translateZ(125px);
 }
 .cube__k {
-    background: rgba(180, -75, -75, 0.5019607843137255);
+    /* background: rgba(180, -75, -75, 0.5019607843137255); */
+    --r: 0;
+    --g: 0;
+    --b: 255;
+    --a: 1;
+    background-color: rgba(var(--r), var(--g), var(--b), var(--a));
     width: 250px;
     height: 60px;
     transform: translate(-50%, -50%) rotateY(180deg) translateZ(150px);
