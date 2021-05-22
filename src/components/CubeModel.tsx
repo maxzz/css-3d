@@ -1,6 +1,4 @@
-import { useAtom } from 'jotai';
 import React from 'react';
-import { colorsAtom } from '../atoms';
 import { ColorRGB } from '../utils/colors';
 import { constrainRange, NumberFormatter } from './slider/numbers';
 
@@ -8,18 +6,18 @@ type CubeModelProps = {
     width: number;
     height: number;
     depth: number;
+    color: ColorRGB;
     rotateX: number;
     rotateY: number;
-    color: ColorRGB;
 };
 
 export type CubeStyles = Record<string, Record<string, string | number>>;
 
 export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     let {
-        width = 230,
-        height = 350,
-        depth = 100,
+        width,
+        height,
+        depth,
         color,
     } = cubeProps;
 
@@ -27,15 +25,14 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     height = +height.toFixed(2);
     depth = +depth.toFixed(2);
 
-    let [colorValue] = useAtom(colorsAtom);
     let shadowRatio = 5;
 
     function makeShade(n: number): string {
         return `rgba(${
-            constrainRange(colorValue.r - n * shadowRatio, 0, 255)}, ${
-            constrainRange(colorValue.g - n * shadowRatio, 0, 255)}, ${
-            constrainRange(colorValue.b - n * shadowRatio, 0, 255)}, ${
-            NumberFormatter(colorValue.a, 1)})`;
+            constrainRange(color.r - n * shadowRatio, 0, 255)}, ${
+            constrainRange(color.g - n * shadowRatio, 0, 255)}, ${
+            constrainRange(color.b - n * shadowRatio, 0, 255)}, ${
+            NumberFormatter(color.a, 1)})`;
     }
 
     let f = { //front
