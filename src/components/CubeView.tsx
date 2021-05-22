@@ -46,12 +46,16 @@ function CubeView() {
         /* HTML */
 
         let html = `
-            <div className="cube__face cube__f"></div> {/* _front_ */}
-            <div className="cube__face cube__l"></div> {/* _left__ */}
-            <div className="cube__face cube__t"></div> {/* _top___ */}
-            <div className="cube__face cube__b"></div> {/* _bottom */}
-            <div className="cube__face cube__r"></div> {/* _right_ */}
-            <div className="cube__face cube__k"></div> {/* _back__ */}`.replace(/^\s+/gm, '');
+            /* HTML2 */
+
+            <div>
+                <div className="cube__face cube__f"></div> {/* _front_ */}
+                <div className="cube__face cube__l"></div> {/* _left__ */}
+                <div className="cube__face cube__t"></div> {/* _top___ */}
+                <div className="cube__face cube__b"></div> {/* _bottom */}
+                <div className="cube__face cube__r"></div> {/* _right_ */}
+                <div className="cube__face cube__k"></div> {/* _back__ */}
+            <div>`.replace(/^\s{12,13}(.+)$/gm, '$1');
 
         return `/* styles.css */\n\n${parent}\n\n${face}\n\n${faces}\n\n/* HTML */\n\n${html}`;
     }
