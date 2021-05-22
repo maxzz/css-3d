@@ -10,7 +10,9 @@ type CubeModelProps = {
     color?: string;
 };
 
-export function getCubeStyles(cubeProps: CubeModelProps): Record<string, Record<string, string | number>> {
+export type CubeStyles = Record<string, Record<string, string | number>>;
+
+export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     let {
         width = 230,
         height = 350,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAtom } from 'jotai';
 import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../atoms';
-import CubeModel, { getCubeStyles } from './CubeModel';
+import CubeModel, { CubeStyles, getCubeStyles } from './CubeModel';
 import CopyButton from './CopyButton';
 
 function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
@@ -10,6 +10,36 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
         .replace(/,$/mg, ';')
         .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
         .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
+}
+
+function lagacyGenerator(styles: CubeStyles, rotation: {x: number; y: number}): string {
+    /* CSS */
+    let parent = `.cube ${objectToCss({
+        'transform-style': 'preserve-3d',
+        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
+    })}`;
+
+    let face = `.cube__face ${objectToCss({
+        position: 'absolute',
+    })}`;
+
+    let faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
+
+    /* HTML */
+
+    let html = `
+        /* HTML */
+
+        <div class="cube">
+            <div class="cube__face cube__f"></div> <!-- _front_ -->
+            <div class="cube__face cube__l"></div> <!-- _left__ -->
+            <div class="cube__face cube__t"></div> <!-- _top___ -->
+            <div class="cube__face cube__b"></div> <!-- _bottom -->
+            <div class="cube__face cube__r"></div> <!-- _right_ -->
+            <div class="cube__face cube__k"></div> <!-- _back__ -->
+        </div>`.replace(/^[ \t]{12,13}/gm, '');
+
+    return `/* CSS */\n\n${parent}\n\n${face}\n\n${faces}\n${html}`;
 }
 
 function CubeView() {
@@ -22,7 +52,7 @@ function CubeView() {
     const [showGenerated] = useAtom(showGeneratedAtom);
 
     function showSource() {
-        const styles = getCubeStyles({
+        const styles: CubeStyles = getCubeStyles({
             width,
             height,
             depth,
@@ -31,33 +61,7 @@ function CubeView() {
             color: '#ff000080',
         });
 
-        /* CSS */
-        let parent = `.cube ${objectToCss({
-            'transform-style': 'preserve-3d',
-            transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
-        })}`;
-
-        let face = `.cube__face ${objectToCss({
-            position: 'absolute',
-        })}`;
-
-        let faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
-
-        /* HTML */
-
-        let html = `
-            /* HTML */
-
-            <div class="cube">
-                <div class="cube__face cube__f"></div> <!-- _front_ -->
-                <div class="cube__face cube__l"></div> <!-- _left__ -->
-                <div class="cube__face cube__t"></div> <!-- _top___ -->
-                <div class="cube__face cube__b"></div> <!-- _bottom -->
-                <div class="cube__face cube__r"></div> <!-- _right_ -->
-                <div class="cube__face cube__k"></div> <!-- _back__ -->
-            </div>`.replace(/^[ \t]{12,13}/gm, '');
-
-        return `/* CSS */\n\n${parent}\n\n${face}\n\n${faces}\n${html}`;
+        return lagacyGenerator(styles, rotation);
     }
 
     return (
