@@ -31,7 +31,9 @@ function CubeView() {
                 .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
             return `${key}: ${text}`;
         });
-        console.log(keys);
+        //console.log(JSON.stringify(keys, null, 4));
+        //keys.forEach((v) => console.log(JSON.stringify(`{${v}}`, null, 4)))
+        return JSON.stringify(keys, null, 4);
     
         // convert JSON to CSS
         let text = JSON.stringify(styles, null, 4)
