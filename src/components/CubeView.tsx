@@ -31,28 +31,14 @@ function CubeView() {
             color: '#ff000080',
         });
 
-        let keys = [...Object.entries(styles)].map(([key, value]) => {
-            let text = JSON.stringify(value, null, 4)
-                .replace(/"/g, '')
-                .replace(/,$/mg, ';')
-                .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
-                .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
-            return `${key}: ${objectToCss(value)}`;
-        });
-        //keys.forEach((v) => console.log(v));
-        // console.log(objectToCss(['a','a','c']));
-        // console.log(objectToCss('aa'));
-        // console.log(objectToCss(5));
-        // console.log(objectToCss(() => {}));
-    
-        // convert JSON to CSS
-        let text = JSON.stringify(styles, null, 4)
-            .replace(/"/g, '')
-            .replace(/,$/mg, ';')
-            .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
-            .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
+        let rot = `.parent: ${objectToCss({
+            transformStyle: 'preserve-3d',
+            transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
+        })}`;
 
-        return text;
+        let keys = [...Object.entries(styles)].map(([key, value]) => `.${key}: ${objectToCss(value)}`).join('\n');
+
+        return `/* styles.css */\n\n${rot}\n\n${keys}`;
     }
 
     return (
