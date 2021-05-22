@@ -8,11 +8,11 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
         .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
 }
 
-export function lagacyGenerator(styles: CubeStyles, rotation: {x: number; y: number}): string {
+export function lagacyGenerator(styles: CubeStyles): string {
     /* CSS */
     let parent = `.cube ${objectToCss({
         'transform-style': 'preserve-3d',
-        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
+        transform: `rotateX(${styles.rotateX}deg) rotateY(${styles.rotateY}deg)`
     })}`;
 
     let face = `.cube__face ${objectToCss({

@@ -1,7 +1,7 @@
 import { atom } from 'jotai';
 import { hexaToRgba } from './utils/colors';
 
-export const rotAtom = atom({x: 20, y: 20});
+export const angleAtom = atom({x: 20, y: 20});
 export const rotActiveAtom = atom(false);
 
 export const cubeWAtom = atom(250);

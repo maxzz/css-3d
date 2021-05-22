@@ -7,8 +7,7 @@ type CubeModelProps = {
     height: number;
     depth: number;
     color: ColorRGB;
-    rotateX: number;
-    rotateY: number;
+    angle: {x: number, y: number};
     shadowRatio: number,
 };
 
@@ -85,8 +84,7 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
         width,
         height,
         depth,
-        rotateX,
-        rotateY,
+        angle,
     } = cubeProps;
 
     width = +width.toFixed(2);
@@ -95,7 +93,7 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
 
     return {
         transformStyle: 'preserve-3d',
-        transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        transform: `rotateX(${angle.x}deg) rotateY(${angle.y}deg)`,
         '--width': `${width}px`,
         '--height': `${height}px`,
         '--depth': `${depth}px`,

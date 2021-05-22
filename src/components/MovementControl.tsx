@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
-import { rotActiveAtom, rotAtom } from '../atoms';
+import { rotActiveAtom, angleAtom } from '../atoms';
 
 function MovementControl() {
-    const [rotation, rotationSet] = useAtom(rotAtom);
+    const [angle, rotationSet] = useAtom(angleAtom);
     const [rotActive, rotActiveSet] = useAtom(rotActiveAtom);
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -19,9 +19,9 @@ function MovementControl() {
                 };
                 if (ev.shiftKey) {
                     if (rot.x > rot.y) {
-                        rot.y = rotation.y;
+                        rot.y = angle.y;
                     } else {
-                        rot.x = rotation.x;
+                        rot.x = angle.x;
                     }
                 }
                 //console.log('shift', ev.shiftKey);
@@ -58,7 +58,7 @@ function MovementControl() {
             onMouseDown={(ev: React.MouseEvent) => {
                 if (!ev.ctrlKey) {
                     ev.preventDefault();
-                    downPt.current = { x: ev.clientX + rotation.y, y: ev.clientY + rotation.x };
+                    downPt.current = { x: ev.clientX + angle.y, y: ev.clientY + angle.x };
                     rotActiveSet(true);
                 }
             }}

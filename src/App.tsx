@@ -5,11 +5,11 @@ import CubeView from './components/CubePanel';
 import LogoPlay from './components/LogoPlay';
 import SliderGroup from './components/slider/SliderGroup';
 import { useAtom } from 'jotai';
-import { rotAtom, showGeneratedAtom } from './atoms';
+import { angleAtom, showGeneratedAtom } from './atoms';
 
 function App() {
     const [showGen, showGenSet] = useAtom(showGeneratedAtom);
-    const [rotation] = useAtom(rotAtom);
+    const [rotation] = useAtom(angleAtom);
     return (
         <>
             <div className="bg-gray-100 h-screen flex flex-col">
