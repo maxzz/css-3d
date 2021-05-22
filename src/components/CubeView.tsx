@@ -31,14 +31,29 @@ function CubeView() {
             color: '#ff000080',
         });
 
-        let rot = `.parent: ${objectToCss({
+        /* CSS */
+        let parent = `.parent: ${objectToCss({
             transformStyle: 'preserve-3d',
             transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
         })}`;
 
-        let keys = [...Object.entries(styles)].map(([key, value]) => `.${key}: ${objectToCss(value)}`).join('\n');
+        let face = `.cube__face: ${objectToCss({
+            position: 'absolute',
+        })}`;
 
-        return `/* styles.css */\n\n${rot}\n\n${keys}`;
+        let faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key}: ${objectToCss(value)}`).join('\n');
+
+        /* HTML */
+
+        let html = `
+            <div className="cube__face cube__f"></div> {/* _front_ */}
+            <div className="cube__face cube__l"></div> {/* _left__ */}
+            <div className="cube__face cube__t"></div> {/* _top___ */}
+            <div className="cube__face cube__b"></div> {/* _bottom */}
+            <div className="cube__face cube__r"></div> {/* _right_ */}
+            <div className="cube__face cube__k"></div> {/* _back__ */}`.replace(/^\s+/gm, '');
+
+        return `/* styles.css */\n\n${parent}\n\n${face}\n\n${faces}\n\n/* HTML */\n\n${html}`;
     }
 
     return (
