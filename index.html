@@ -18,6 +18,16 @@
 
 .cube__face {
     position: absolute;
+    --shadowRatio: 5;
+    --faceWeight: 1;
+    --faceFactor: calc(var(--shadowRatio) * var(--faceWeight));
+    --q: calc(var(--shadowRatio) * var(--faceFactor));
+    background-color: rgba(calc(var(--r) * var(--faceFactor)), calc(var(--g) * var(--faceFactor)), calc(var(--b) * var(--faceFactor)), var(--a));
+
+    --r: 0;
+    --g: 0;
+    --b: 255;
+    --a: 1;
 }
 
 .cube__f {
@@ -45,26 +55,32 @@
     transform: translate(-50%, -50%) rotateX(-90deg) translateZ(30px);
 }
 .cube__r {
-    background: rgba(205, -50, -50, 0.5019607843137255);
+    /* background: rgba(205, -50, -50, 0.5019607843137255); */
     width: 300px;
     height: 60px;
     transform: translate(-50%, -50%) rotateY(-90deg) translateZ(125px);
+
+    --faceWeight: 10;
 }
 .cube__k {
     /* background: rgba(180, -75, -75, 0.5019607843137255); */
-    --r: 0;
+    /* --r: 0;
     --g: 0;
     --b: 255;
     --a: 1;
-    background-color: rgba(var(--r), var(--g), var(--b), var(--a));
+    background-color: rgba(var(--r), var(--g), var(--b), var(--a)); */
+
+    --faceWeight: 15;
+    /* background: rgba(calc(var(--r) * var(--faceFactor)), calc(var(--g) * var(--faceFactor)), calc(var(--b) * var(--faceFactor)), var(--a)); */
+
     width: 250px;
     height: 60px;
-    transform: translate(-50%, -50%) rotateY(180deg) translateZ(150px);
+    /* transform: translate(-50%, -50%) rotateY(180deg) translateZ(150px); */
 }
 
     </style>
 
-    <div class="h-96 flex items-center justify-center">
+    <div class="h-64 flex items-center justify-center">
         <div class="cube">
             <div class="cube__face cube__f"></div> <!-- _front_ -->
             <div class="cube__face cube__l"></div> <!-- _left__ -->
