@@ -4,13 +4,12 @@ import { cubeDAtom, cubeHAtom, cubeWAtom, rotAtom, showGeneratedAtom } from '../
 import CubeModel, { getCubeStyles } from './CubeModel';
 import CopyButton from './CopyButton';
 
-function objectToCss<T extends object>(json: Exclude<T, any[]>): string {
-    let text = JSON.stringify(json, null, 4)
+function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
+    return JSON.stringify(obj, null, 4)
         .replace(/"/g, '')
         .replace(/,$/mg, ';')
         .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
         .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
-    return text;
 }
 
 function CubeView() {
@@ -30,7 +29,7 @@ function CubeView() {
             rotateX: rotation.x,
             rotateY: rotation.y,
             color: '#ff000080',
-        }) as Record<string, Record<string, string | number>>;
+        });
 
         let keys = [...Object.entries(styles)].map(([key, value]) => {
             let text = JSON.stringify(value, null, 4)
@@ -41,9 +40,10 @@ function CubeView() {
             return `${key}: ${objectToCss(value)}`;
         });
         //keys.forEach((v) => console.log(v));
-        //console.log(objectToCss(['a','a','c']));
-        //console.log(objectToCss('aa'));
-        //console.log(objectToCss(5));
+        // console.log(objectToCss(['a','a','c']));
+        // console.log(objectToCss('aa'));
+        // console.log(objectToCss(5));
+        // console.log(objectToCss(() => {}));
     
         // convert JSON to CSS
         let text = JSON.stringify(styles, null, 4)
