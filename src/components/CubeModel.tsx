@@ -80,12 +80,38 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     return {f, l, t, b, r, k};
 }
 
+export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSProperties {
+    let {
+        width,
+        height,
+        depth,
+        rotateX,
+        rotateY,
+    } = cubeProps;
+
+    width = +width.toFixed(2);
+    height = +height.toFixed(2);
+    depth = +depth.toFixed(2);
+
+    return {
+        transformStyle: 'preserve-3d',
+        transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+        '--width:': `${width}px`,
+        '--height:': `${height}px`,
+    } as React.CSSProperties;
+}
+
 function CubeModel(props: CubeModelProps) {
     const styles = getCubeStyles(props)
     return (
         <div
             className="absolute top-1/2 left-1/2 select-none"
-            style={{ transformStyle: 'preserve-3d', transform: `rotateX(${props.rotateX}deg) rotateY(${props.rotateY}deg)` }}
+            style={{
+                transformStyle: 'preserve-3d',
+                transform: `rotateX(${props.rotateX}deg) rotateY(${props.rotateY}deg)`,
+                '--width:': `${styles.width}px`,
+                '--height:': `${styles.height}px`,
+            } as React.CSSProperties}
         >
             <div className="absolute" style={styles.f}></div> {/* _front_ */}
             <div className="absolute" style={styles.l}></div> {/* _left__ */}
