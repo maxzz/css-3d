@@ -44,7 +44,7 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
 
     let l = { //left
         background: makeShade(10),
-        width: `${depth}px`,
+        width: 'var(--depth)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(90deg) translateZ(calc((var(--width) / 2)))`
     };
@@ -52,20 +52,20 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     let t = { //top
         background: makeShade(0),
         width: 'var(--width)',
-        height: `${depth}px`,
+        height: 'var(--depth)',
         transform: `translate(-50%, -50%) rotateX(90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let b = { //bottom
         background: makeShade(20),
         width: 'var(--width)',
-        height: `${depth}px`,
+        height: 'var(--depth)',
         transform: `translate(-50%, -50%) rotateX(-90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let r = { //right
         background: makeShade(10),
-        width: `${depth}px`,
+        width: 'var(--depth)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(-90deg) translateZ(calc((var(--width) / 2)))`
     };
