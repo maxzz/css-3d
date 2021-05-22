@@ -1,5 +1,6 @@
 import React from 'react';
 import { hexaToRgba } from '../utils/colors';
+import { NumberFormatter } from './slider/numbers';
 
 type CubeModelProps = {
     width: number;
@@ -28,7 +29,7 @@ export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
     let red = colorValue.r;
     let green = colorValue.g;
     let blue = colorValue.b;
-    let opacity = colorValue.a;
+    let opacity = NumberFormatter(colorValue.a, 1);
 
     let shadowRatio = 5;
 
