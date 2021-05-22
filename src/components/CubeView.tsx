@@ -21,7 +21,17 @@ function CubeView() {
             rotateX: rotation.x,
             rotateY: rotation.y,
             color: '#ff000080',
+        }) as Record<string, Record<string, string | number>>;
+
+        let keys = [...Object.entries(styles)].map(([key, value]) => {
+            let text = JSON.stringify(value, null, 4)
+                .replace(/"/g, '')
+                .replace(/,$/mg, ';')
+                .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
+                .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
+            return `${key}: ${text}`;
         });
+        console.log(keys);
     
         // convert JSON to CSS
         let text = JSON.stringify(styles, null, 4)
