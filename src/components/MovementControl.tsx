@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useAtom } from 'jotai';
-import { rotActiveAtom, angleAtom } from '../atoms';
+import { rotationActiveAtom, angleAtom } from '../atoms';
 
 function MovementControl() {
     const [angle, rotationSet] = useAtom(angleAtom);
-    const [rotActive, rotActiveSet] = useAtom(rotActiveAtom);
+    const [rotActive, rotActiveSet] = useAtom(rotationActiveAtom);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const downPt = useRef<{ x: number; y: number; }>();
 
     useEffect(() => {
         if (rotActive && containerRef.current) {
-            let prev;
             function onMove(ev: MouseEvent) {
                 const rot = {
                     x: ev.clientX - downPt.current!.x,
@@ -24,16 +23,13 @@ function MovementControl() {
                         rot.x = angle.x;
                     }
                 }
-                //console.log('shift', ev.shiftKey);
-
                 rotationSet({ x: rot.y, y: rot.x });
             }
             function onDone() {
                 rotActiveSet(false);
                 document.removeEventListener('mouseup', onDone);
             }
-
-            window.addEventListener('mousemove', onMove, false);
+            window.addEventListener('mousemove', onMove, false); //TODO: why window and not documnet?
             document.addEventListener('mouseup', onDone, false);
             return () => {
                 window.removeEventListener('mousemove', onMove);
