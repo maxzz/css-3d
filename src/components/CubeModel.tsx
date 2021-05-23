@@ -11,9 +11,9 @@ export type CubeModelProps = {
     shadowRatio: number,
 };
 
-export type CubeStyles = Record<string, React.CSSProperties>;
+export type FaceStyles = Record<string, React.CSSProperties>;
 
-export function getCubeStyles(cubeProps: CubeModelProps): CubeStyles {
+export function getCubeStyles(cubeProps: CubeModelProps): FaceStyles {
     let {
         width,
         height,
