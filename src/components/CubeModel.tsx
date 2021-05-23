@@ -112,19 +112,17 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
 function CubeModel(props: CubeModelProps) {
     const styles = getCubeStyles(props)
     return (
-        <div
-            className="absolute top-1/2 left-1/2 select-none"
-            style={getCubeParentStyles(props)}
-        >
-            <div className="cube-face cube__f"></div> {/* _front_ */}
-            <div className="cube-face cube__l"></div> {/* _left__ */}
-            <div className="cube-face cube__t"></div> {/* _top___ */}
-            <div className="cube-face cube__b"></div> {/* _bottom */}
-            <div className="cube-face cube__r"></div> {/* _right_ */}
-            <div className="cube-face cube__k"></div> {/* _back__ */}
-
-            <div className="absolute" style={{...styles.r, background: 'transparent', borderBottom: '3px solid blue', borderLeft: '3px solid green'}}></div> {/* _right_ */}
-            <div className="absolute" style={{...styles.k, background: 'transparent', borderBottom: '3px solid red'}}></div> {/* _back__ */}
+        <div className="absolute top-1/2 left-1/2 select-none" >
+            <div className="cube" style={getCubeParentStyles(props)}>
+                <div className="cube__f"></div> {/* _front_ */}
+                <div className="cube__l"></div> {/* _left__ */}
+                <div className="cube__t"></div> {/* _top___ */}
+                <div className="cube__b"></div> {/* _bottom */}
+                <div className="cube__r"></div> {/* _right_ */}
+                <div className="cube__k"></div> {/* _back__ */}
+                <div className="absolute" style={{...styles.r, background: 'transparent', borderBottom: '3px solid blue', borderLeft: '3px solid green'}}></div> {/* _right_ */}
+                <div className="absolute" style={{...styles.k, background: 'transparent', borderBottom: '3px solid red'}}></div> {/* _back__ */}
+            </div>
         </div>
     );
 }
