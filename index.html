@@ -10,13 +10,13 @@
     <style>
 /* CSS */
 
-.cube {
+.test-cube {
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(20deg) rotateY(20deg);
 }
 
-.cube__face {
+.test-cube__face {
     position: absolute;
     --shadowRatio: 5;
     --faceWeight: 1;
@@ -30,37 +30,37 @@
         calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight)) ), var(--faceA));
 }
 
-.cube__f {
+.test-cube__f {
     --faceWeight: 5;
     width: 250px;
     height: 60px;
     transform: translate(-50%, -50%) rotateY(0deg) translateZ(150px);
 }
-.cube__l {
+.test-cube__l {
     --faceWeight: 10;
     width: 300px;
     height: 60px;
     transform: translate(-50%, -50%) rotateY(90deg) translateZ(125px);
 }
-.cube__t {
+.test-cube__t {
     --faceWeight: 0;
     width: 250px;
     height: 300px;
     transform: translate(-50%, -50%) rotateX(90deg) translateZ(30px);
 }
-.cube__b {
+.test-cube__b {
     --faceWeight: 20;
     width: 250px;
     height: 300px;
     transform: translate(-50%, -50%) rotateX(-90deg) translateZ(30px);
 }
-.cube__r {
+.test-cube__r {
     --faceWeight: 10;
     width: 300px;
     height: 60px;
     transform: translate(-50%, -50%) rotateY(-90deg) translateZ(125px);
 }
-.cube__k {
+.test-cube__k {
     --faceWeight: 15;
     width: 250px;
     height: 60px;
@@ -69,13 +69,13 @@
     </style>
 
     <div class="h-64 flex items-center justify-center">
-        <div class="cube">
-            <div class="cube__face cube__f"></div> <!-- _front_ -->
-            <div class="cube__face cube__l"></div> <!-- _left__ -->
-            <div class="cube__face cube__t"></div> <!-- _top___ -->
-            <div class="cube__face cube__b"></div> <!-- _bottom -->
-            <div class="cube__face cube__r"></div> <!-- _right_ -->
-            <div class="cube__face cube__k"></div> <!-- _back__ -->
+        <div class="test-cube">
+            <div class="test-cube__face test-cube__f"></div> <!-- _front_ -->
+            <div class="test-cube__face test-cube__l"></div> <!-- _left__ -->
+            <div class="test-cube__face test-cube__t"></div> <!-- _top___ -->
+            <div class="test-cube__face test-cube__b"></div> <!-- _bottom -->
+            <div class="test-cube__face test-cube__r"></div> <!-- _right_ -->
+            <div class="test-cube__face test-cube__k"></div> <!-- _back__ -->
         </div>
     </div>
 
