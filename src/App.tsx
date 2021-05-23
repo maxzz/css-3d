@@ -51,14 +51,12 @@ function App() {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* Model */}
                 <div className="flex-1 relative">
                     <CubeView />
                 </div>
             </div>
-
-            {/* <div className="absolute left-0 top-0 w-1/2 h-[259px] border border-dotted border-yellow-500 z-40"></div> */}
         </>
     );
 }

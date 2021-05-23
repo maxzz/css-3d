@@ -15,15 +15,16 @@ function CubeView() {
     const [showGenerated] = useAtom(showGeneratedAtom);
 
     function showSource() {
-        const styles: CubeStyles = getCubeStyles({
+        const cubeProps = {
             width,
             height,
             depth,
             color: color,
             shadowRatio,
             angle,
-        });
-        return lagacyGenerator(styles);
+        };
+        const styles: CubeStyles = getCubeStyles(cubeProps);
+        return lagacyGenerator(cubeProps, styles);
     }
 
     return (

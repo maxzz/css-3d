@@ -2,7 +2,7 @@ import React from 'react';
 import { ColorRGB } from '../utils/colors';
 import { constrainRange, NumberFormatter } from './slider/numbers';
 
-type CubeModelProps = {
+export type CubeModelProps = {
     width: number;
     height: number;
     depth: number;
