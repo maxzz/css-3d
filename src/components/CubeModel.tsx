@@ -1,6 +1,7 @@
 import React from 'react';
 import { ColorRGB } from '../utils/colors';
 import { constrainRange, NumberFormatter } from './slider/numbers';
+import './CubeModel.scss';
 
 export type CubeModelProps = {
     width: number;
@@ -106,7 +107,7 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
         '--faceB': 218,
         '--faceA': .5, // rgba(24, 121, 218, 0.502) #1879da80
 
-        background: `rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))`
+        //background: `rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))`
 
     } as React.CSSProperties;
 }
@@ -118,12 +119,12 @@ function CubeModel(props: CubeModelProps) {
             className="absolute top-1/2 left-1/2 select-none"
             style={getCubeParentStyles(props)}
         >
-            <div className="absolute" style={styles.f}></div> {/* _front_ */}
-            <div className="absolute" style={styles.l}></div> {/* _left__ */}
-            <div className="absolute" style={styles.t}></div> {/* _top___ */}
-            <div className="absolute" style={styles.b}></div> {/* _bottom */}
-            <div className="absolute" style={styles.r}></div> {/* _right_ */}
-            <div className="absolute" style={styles.k}></div> {/* _back__ */}
+            <div className="absolute cube-face cube__f"></div> {/* _front_ */}
+            <div className="absolute cube-face cube__l"></div> {/* _left__ */}
+            <div className="absolute cube-face cube__t"></div> {/* _top___ */}
+            <div className="absolute cube-face cube__b"></div> {/* _bottom */}
+            <div className="absolute cube-face cube__r"></div> {/* _right_ */}
+            <div className="absolute cube-face cube__k"></div> {/* _back__ */}
 
             <div className="absolute" style={{...styles.r, background: 'transparent', borderBottom: '3px solid blue', borderLeft: '3px solid green'}}></div> {/* _right_ */}
             <div className="absolute" style={{...styles.k, background: 'transparent', borderBottom: '3px solid red'}}></div> {/* _back__ */}
