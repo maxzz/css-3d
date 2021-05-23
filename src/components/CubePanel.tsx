@@ -35,7 +35,7 @@ function CubeView() {
                 </pre>
             </div>}
             {/* Mini cube */}
-            <div className={`z-10 absolute transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
+            <div className={`z-10 absolute select-none transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
                 <CubeModel angle={angle} width={width} height={height} depth={depth} color={color} shadowRatio={shadowRatio} />
             </div>
         </div>
