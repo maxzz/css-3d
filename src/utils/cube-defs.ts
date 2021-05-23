@@ -83,6 +83,7 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
         width,
         height,
         depth,
+        color,
         angle,
     } = cubeProps;
 
@@ -100,9 +101,9 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
 
         '--shadowRatio': 5,
         '--faceWeight': 1,
-        '--faceR': 0x18,
-        '--faceG': 0x79,
-        '--faceB': 0xda,
+        '--faceR': color.r,
+        '--faceG': color.g,
+        '--faceB': color.b,
         '--faceA': .5, // #1879da80
     } as React.CSSProperties;
 }
