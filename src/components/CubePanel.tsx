@@ -35,25 +35,27 @@ function CubeView() {
                 </pre>
             </div>}
             {/* Mini cube */}
-            <div className={`z-10 absolute w-auto h-auto select-none transform ${showGenerated ? 'top-32 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
-                <CubeModel angle={angle} width={width} height={height} depth={depth} color={color} shadowRatio={shadowRatio} />
-
-                {/* x */}
-                <div className="transform translate-x-[-250px] translate-y-[-250px]">
-                    <CubeModel angle={angle} width={500} height={10} depth={500} color={{r: 0xff, g: 0, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
+            <div className="w-[400px] h-[400px] ml-auto">
+                <div className={`z-10 absolute select-none transform ${showGenerated ? 'top-32 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
+                    <CubeModel angle={angle} width={width} height={height} depth={depth} color={color} shadowRatio={shadowRatio} />
                 </div>
 
-                {/* y */}
-                <div className="transform translate-x-[-250px] translate-y-[-250px]">
-                    <CubeModel angle={angle} width={10} height={500} depth={500} color={{r: 0, g: 0xff, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
-                </div>
-
-                {/* z */}
-                <div className="transform translate-x-[100%] translate-y-[-250px]">
-                    <CubeModel angle={angle} width={500} height={500} depth={10} color={{r: 0, g: 0, b: 0xff, a: 0.1}} shadowRatio={shadowRatio} />
-                </div>
-                {/* style={{transformOrigin: '50% 100%'}} */}
-                {/* style={{'--tw-translate-x': '25%'} as React.CSSProperties } */}
+                    <div className="w-full h-full transform scale-[.2]">
+                        {/* x */}
+                        <div className="transform translate-x-[250px] translate-y-[-250px]">
+                            <CubeModel angle={angle} width={500} height={10} depth={500} color={{r: 0xff, g: 0, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
+                        </div>
+                        {/* y */}
+                        <div className="transform translate-x-[0px] translate-y-[-500px]">
+                            <CubeModel angle={angle} width={10} height={500} depth={500} color={{r: 0, g: 0xff, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
+                        </div>
+                        {/* z */}
+                        <div className="transform translate-x-[250px] translate-y-[-250px]">
+                            <CubeModel angle={angle} width={500} height={500} depth={10} color={{r: 0, g: 0, b: 0xff, a: 0.1}} shadowRatio={shadowRatio} />
+                        </div>
+                        {/* style={{transformOrigin: '50% 100%'}} */}
+                        {/* style={{'--tw-translate-x': '25%'} as React.CSSProperties } */}
+                    </div>
 
             </div>
         </div>
