@@ -38,9 +38,9 @@ function CubeView() {
             <div className={`z-10 absolute select-none transform ${showGenerated ? 'top-28 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
                 <CubeModel angle={angle} width={width} height={height} depth={depth} color={color} shadowRatio={shadowRatio} />
 
-                <CubeModel angle={angle} width={10} height={500} depth={500} color={{r: 0xff, g: 0, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
-                <CubeModel angle={angle} width={500} height={10} depth={500} color={{r: 0, g: 0xff, b: 0, a: 0.1}} shadowRatio={shadowRatio} />
-                <CubeModel angle={angle} width={500} height={500} depth={10} color={{r: 0, g: 0, b: 0xff, a: 0.1}} shadowRatio={shadowRatio} />
+                <CubeModel angle={angle} width={10} height={500} depth={500} color={{r: 0, g: 0xff, b: 0, a: 0.1}} shadowRatio={shadowRatio} /> {/* x */}
+                <CubeModel angle={angle} width={500} height={10} depth={500} color={{r: 0xff, g: 0, b: 0, a: 0.1}} shadowRatio={shadowRatio} /> {/* y */}
+                <CubeModel angle={angle} width={500} height={500} depth={10} color={{r: 0, g: 0, b: 0xff, a: 0.1}} shadowRatio={shadowRatio} /> {/* z */}
             </div>
         </div>
     );
