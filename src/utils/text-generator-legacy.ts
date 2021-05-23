@@ -10,7 +10,11 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
 
 export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* CSS */
-    let parent = `.cube ${objectToCss(getCubeParentStyles(cubeProps))}`;
+    let parentProps = {
+        ...getCubeParentStyles(cubeProps),
+        'background-color': 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
+    }
+    let parent = `.cube ${objectToCss(parentProps)}`;
 
     let face = `.cube__face ${objectToCss({
         position: 'absolute',
