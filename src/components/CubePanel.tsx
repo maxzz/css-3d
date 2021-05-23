@@ -51,17 +51,18 @@ function CubeView() {
                     }}
                 >
                     {/* x: red */}
-                    <div className="" style={{ transformStyle: 'preserve-3d',transform: 'translateX(250px)' }}>
-                        <CubeModel angle={{ x: 0, y: 0 }} width={500} height={10} depth={10} color={{ r: 0xff, g: 0, b: 0, a: 0.1 }} shadowRatio={shadowRatio} />
+                    <div style={{ transformStyle: 'preserve-3d',transform: 'translateX(50px)' }}>
+                        <CubeModel angle={{ x: 0, y: 0 }} width={100} height={5} depth={5} color={{ r: 0xe6, g: 0x55, b: 0x55, a: 0.3 }} shadowRatio={shadowRatio} />
                     </div>
                     {/* y: green */}
-                    <div className="" style={{ transformStyle: 'preserve-3d', transform: 'translateY(-250px)' }}>
-                        <CubeModel angle={{ x: 0, y: 0 }} width={10} height={500} depth={10} color={{ r: 0, g: 0xff, b: 0, a: 0.1 }} shadowRatio={shadowRatio} />
+                    <div style={{ transformStyle: 'preserve-3d', transform: 'translateY(-50px)' }}>
+                        <CubeModel angle={{ x: 0, y: 0 }} width={5} height={100} depth={5} color={{ r: 0, g: 0xff, b: 0, a: 0.3 }} shadowRatio={shadowRatio} />
                     </div>
                     {/* z: blue */}
-                    <div className="" style={{ transformStyle: 'preserve-3d', transform: 'translateZ(-250px)' }}>
-                        <CubeModel angle={{ x: 0, y: 0 }} width={10} height={10} depth={500} color={{ r: 0, g: 0, b: 0xff, a: 0.3 }} shadowRatio={shadowRatio} />
+                    <div style={{ transformStyle: 'preserve-3d', transform: 'translateZ(-50px)' }}>
+                        <CubeModel angle={{ x: 0, y: 0 }} width={5} height={5} depth={100} color={{ r: 0x71, g: 0x71, b: 0xe6, a: 0.5 }} shadowRatio={shadowRatio} />
                     </div>
+                    {/* #7171e6 */}
                 </div>
             </div>
         </div>

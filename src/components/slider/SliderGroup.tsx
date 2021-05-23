@@ -32,7 +32,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueW, digits)} onChange={(ev) => valueWSet(getInputValue(ev, valueW))} />
+                                    <input className="tp-txtv_i" style={{color: '#a45555'}} type="text" value={NumberFormatter(valueW, digits)} onChange={(ev) => valueWSet(getInputValue(ev, valueW))} />
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueH, digits)} onChange={(ev) => valueHSet(getInputValue(ev, valueW))} />
+                                    <input className="tp-txtv_i" style={{color: 'green'}} type="text" value={NumberFormatter(valueH, digits)} onChange={(ev) => valueHSet(getInputValue(ev, valueW))} />
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ function SliderGroup() {
                             </div>
                             <div className="tp-sldtxtv_t max-w-[2rem]">
                                 <div className="tp-txtv tp-txtv-num">
-                                    <input className="tp-txtv_i" type="text" value={NumberFormatter(valueD, digits)} onChange={(ev) => valueDSet(getInputValue(ev, valueW))} />
+                                    <input className="tp-txtv_i" style={{color: '#7171e6'}} type="text" value={NumberFormatter(valueD, digits)} onChange={(ev) => valueDSet(getInputValue(ev, valueW))} />
                                 </div>
                             </div>
                         </div>
