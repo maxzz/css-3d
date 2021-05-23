@@ -12,6 +12,7 @@ function MovementControl() {
     useEffect(() => {
         if (rotActive && containerRef.current) {
             function onMove(ev: MouseEvent) {
+                //console.log('mouse', { x: ev.clientX, y: ev.clientY }, 'angle', angle);
                 const rot = {
                     x: ev.clientX - downPt.current!.x,
                     y: ev.clientY - downPt.current!.y,
@@ -23,7 +24,7 @@ function MovementControl() {
                         rot.x = angle.x;
                     }
                 }
-                rotationSet({ x: rot.y, y: rot.x });
+                rotationSet({ x: -rot.y, y: -rot.x });
             }
             function onDone() {
                 rotActiveSet(false);
@@ -55,6 +56,7 @@ function MovementControl() {
                 if (!ev.ctrlKey) {
                     ev.preventDefault();
                     downPt.current = { x: ev.clientX + angle.y, y: ev.clientY + angle.x };
+                    //console.log(downPt.current, angle);
                     rotActiveSet(true);
                 }
             }}
