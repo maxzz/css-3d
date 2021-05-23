@@ -1,4 +1,4 @@
-import { CubeModelProps, FaceStyles, getCubeParentStyles, getCubeStyles } from '../components/CubeModel';
+import { CubeModelProps, FaceStyles, getCubeParentStyles, getCubeStyles } from './cube-defs';
 
 function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
     return JSON.stringify(obj, null, 4)
@@ -10,6 +10,7 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
 
 export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* CSS */
+    
     let parentProps = {
         ...getCubeParentStyles(cubeProps),
         'background-color': 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
