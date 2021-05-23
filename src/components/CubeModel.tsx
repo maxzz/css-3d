@@ -35,42 +35,42 @@ export function getCubeStyles(cubeProps: CubeModelProps): FaceStyles {
     }
 
     let f = { //front
-        background: makeShade(5),
+        '--faceWeight': 5,
         width: 'var(--width)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(0deg) translateZ(calc((var(--depth) / 2)))`
     };
 
     let l = { //left
-        background: makeShade(10),
+        '--faceWeight': 10,
         width: 'var(--depth)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(90deg) translateZ(calc((var(--width) / 2)))`
     };
 
     let t = { //top
-        background: makeShade(0),
+        '--faceWeight': 0,
         width: 'var(--width)',
         height: 'var(--depth)',
         transform: `translate(-50%, -50%) rotateX(90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let b = { //bottom
-        background: makeShade(20),
+        '--faceWeight': 20,
         width: 'var(--width)',
         height: 'var(--depth)',
         transform: `translate(-50%, -50%) rotateX(-90deg) translateZ(calc((var(--height) / 2)))`
     };
 
     let r = { //right
-        background: makeShade(10),
+        '--faceWeight': 10,
         width: 'var(--depth)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(-90deg) translateZ(calc((var(--width) / 2)))`
     };
 
     let k = { //back
-        background: makeShade(15),
+        '--faceWeight': 15,
         width: 'var(--width)',
         height: 'var(--height)',
         transform: `translate(-50%, -50%) rotateY(180deg) translateZ(calc((var(--depth) / 2)))`
@@ -92,11 +92,22 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
     depth = +depth.toFixed(2);
 
     return {
+        position: 'relative',
         transformStyle: 'preserve-3d',
         transform: `rotateX(${angle.x}deg) rotateY(${angle.y}deg)`,
         '--width': `${width}px`,
         '--height': `${height}px`,
         '--depth': `${depth}px`,
+
+        '--shadowRatio': 5,
+        '--faceWeight': 1,
+        '--faceR': 24,
+        '--faceG': 121,
+        '--faceB': 218,
+        '--faceA': .5, // rgba(24, 121, 218, 0.502) #1879da80
+
+        background: `rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))`
+
     } as React.CSSProperties;
 }
 

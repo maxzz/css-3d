@@ -23,11 +23,11 @@
     --faceR: 24;
     --faceG: 121;
     --faceB: 218;
-    --a: .5; /* color: rgba(24, 121, 218, 0.502); //#1879da80 */
+    --faceA: .5; /* color: rgba(24, 121, 218, 0.502); //#1879da80 */
     background-color: rgba(
         calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight)) ),
         calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight)) ),
-        calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight)) ), var(--a));
+        calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight)) ), var(--faceA));
 }
 
 .cube__f {
