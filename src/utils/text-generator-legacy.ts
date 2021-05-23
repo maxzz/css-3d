@@ -1,4 +1,4 @@
-import { CubeModelProps, CubeStyles, getCubeParentStyles } from '../components/CubeModel';
+import { CubeModelProps, CubeStyles, getCubeParentStyles, getCubeStyles } from '../components/CubeModel';
 
 function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
     return JSON.stringify(obj, null, 4)
@@ -8,13 +8,15 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
         .replace(/};((?:\r?\n)\s*)}/mg, '}$1}');
 }
 
-export function lagacyGenerator(cubeProps: CubeModelProps, styles: CubeStyles): string {
+export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* CSS */
     let parent = `.cube ${objectToCss(getCubeParentStyles(cubeProps))}`;
 
     let face = `.cube__face ${objectToCss({
         position: 'absolute',
     })}`;
+
+    const styles: CubeStyles = getCubeStyles(cubeProps);
 
     let faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
 

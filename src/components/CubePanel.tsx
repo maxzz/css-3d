@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAtom } from 'jotai';
 import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom } from '../atoms';
-import CubeModel, { CubeStyles, getCubeStyles } from './CubeModel';
+import CubeModel from './CubeModel';
 import CopyButton from './CopyButton';
 import { lagacyGenerator } from '../utils/text-generator-legacy';
 
@@ -23,8 +23,7 @@ function CubeView() {
             shadowRatio,
             angle,
         };
-        const styles: CubeStyles = getCubeStyles(cubeProps);
-        return lagacyGenerator(cubeProps, styles);
+        return lagacyGenerator(cubeProps);
     }
 
     return (
