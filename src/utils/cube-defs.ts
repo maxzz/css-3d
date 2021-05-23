@@ -104,6 +104,6 @@ export function getCubeParentStyles(cubeProps: CubeModelProps): React.CSSPropert
         '--faceR': color.r,
         '--faceG': color.g,
         '--faceB': color.b,
-        '--faceA': .5, // #1879da80
+        '--faceA': color.a, // #1879da80
     } as React.CSSProperties;
 }
