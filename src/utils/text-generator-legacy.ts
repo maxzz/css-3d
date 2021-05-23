@@ -16,7 +16,7 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
     }
     let parent = `.cube ${objectToCss(parentProps)}`;
 
-    let face = `.cube__face ${objectToCss({
+    let face = `.cube > div ${objectToCss({
         position: 'absolute',
     })}`;
 

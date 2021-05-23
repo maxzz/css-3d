@@ -120,8 +120,25 @@ function CubeModel(props: CubeModelProps) {
                 <div className="cube__b"></div> {/* _bottom */}
                 <div className="cube__r"></div> {/* _right_ */}
                 <div className="cube__k"></div> {/* _back__ */}
-                <div className="absolute" style={{...styles.r, background: 'transparent', borderBottom: '3px solid blue', borderLeft: '3px solid green'}}></div> {/* _right_ */}
-                <div className="absolute" style={{...styles.k, background: 'transparent', borderBottom: '3px solid red'}}></div> {/* _back__ */}
+
+                <div className="absolute" style={{
+                    ...styles.r,
+                    width: '500px',
+                    height: '500px',
+
+                    background: 'transparent',
+                    borderBottom: '3px solid blue',
+                    borderLeft: '3px solid green'
+                }}></div> {/* _right_ */}
+
+                <div className="absolute" style={{
+                    ...styles.k,
+                    width: '500px',
+                    height: '500px',
+                    
+                    background: 'transparent',
+                    borderBottom: '3px solid red'
+                }}></div> {/* _back__ */}
             </div>
         </div>
     );
