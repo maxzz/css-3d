@@ -2,7 +2,7 @@ import { CubeModelProps, FaceStyles, getCubeParentStyles, getCubeStyles } from '
 
 function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
     const camelToSnakeCase = (str: string) => str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
-    let o = Object.fromEntries([...Object.entries(obj)].map(([key, val]) => [camelToSnakeCase(key), val]));
+    let o = Object.fromEntries([...Object.entries(obj)].map(([key, val]) => [key.match(/^--/) ? key : camelToSnakeCase(key), val]));
     return JSON.stringify(o, null, 4)
         .replace(/"/g, '')
         .replace(/,$/mg, ';')
