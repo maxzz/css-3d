@@ -1,7 +1,9 @@
 import { CubeModelProps, FaceStyles, getCubeParentStyles, getCubeStyles } from './cube-defs';
 
 function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): string {
-    return JSON.stringify(obj, null, 4)
+    const camelToSnakeCase = (str: string) => str.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+    let o = Object.fromEntries([...Object.entries(obj)].map(([key, val]) => [camelToSnakeCase(key), val]));
+    return JSON.stringify(o, null, 4)
         .replace(/"/g, '')
         .replace(/,$/mg, ';')
         .replace(/((?:\r?\n)\s*)};?/mg, ';$1}')
@@ -30,7 +32,7 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* HTML */
 
     let html = `
-        <div class="h-64 flex items-center justify-center">
+        <div style="height: 256px; display: flex; align-items: center; justify-content: center">
             <div class="cube">
                 <div class="cube__face cube__f"></div> <!-- _front_ -->
                 <div class="cube__face cube__l"></div> <!-- _left__ -->
