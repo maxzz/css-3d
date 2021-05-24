@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import { NumberFormatter } from './components/slider/numbers';
 import { hexaToRgba } from './utils/colors';
 import { lagacyGenerator } from './utils/text-generator-legacy';
 
@@ -16,6 +17,7 @@ export const colorsAtom = atom(
     (get) => {
         let color = get(colorHexAtom);
         let colorValue = hexaToRgba(color || '#1879da80') || { r: 0x18, g: 0x79, b: 0xda, a: 1 }; // #187979
+        colorValue.a = +NumberFormatter(colorValue.a, 2);
         return colorValue;
     });
 
@@ -24,7 +26,7 @@ export const shadowRatioAtom = atom(5);
 // App properties
 
 export const showGeneratedAtom = atom(true);
-export const showTestAtom = atom(false);
+export const showingTestAtom = atom(false);
 export const generatedNameAtom = atom('cube-test');
 
 export const generatedTextAtom = atom(

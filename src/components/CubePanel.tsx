@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom, generatedNameAtom, showTestAtom, generatedTextAtom } from '../atoms';
+import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom, generatedNameAtom, showingTestAtom, generatedTextAtom } from '../atoms';
 import CubeModel from './CubeModel';
 import CopyButton from './CopyButton';
 import { lagacyGenerator } from '../utils/text-generator-legacy';
@@ -14,18 +14,18 @@ function CubeView() {
     const [shadowRatio] = useAtom(shadowRatioAtom);
     const [angle] = useAtom(angleAtom);
     const [showGenerated] = useAtom(showGeneratedAtom);
-    const [showTest, showTestSet] = useAtom(showTestAtom);
+    const [showingTest, showingTestSet] = useAtom(showingTestAtom);
 
     const [generatedText] = useAtom(generatedTextAtom);
 
     function handlePreview() {
         let testElm = document.getElementById('cube-test-place')!;
-        if (!showTest) { // i.e. now showing
+        if (!showingTest) {
             testElm.innerHTML = generatedText;
         } else {
             testElm.innerHTML = '';
         }
-        showTestSet((v: boolean) => !v);
+        showingTestSet((v: boolean) => !v);
     }
 
     return (
