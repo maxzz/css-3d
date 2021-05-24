@@ -32,8 +32,9 @@ function CubeView() {
         <div className="relative h-full pointer-events-none">
             {/* Generated text */}
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
-                <div className="absolute top-2 right-2 px-2 py-1 rounded-sm border border-green-700">
-                    <CopyButton forId="generated-source" className="absolute top-2 right-2 px-2 py-1 rounded-sm border border-green-700" />
+                <div className="absolute top-2 right-2 px-2 py-1 flex items-center space-x-1">
+                    <CopyButton forId="generated-source" className="px-2 py-1 rounded-sm border border-green-700" />
+                    <div className="px-2 py-1 rounded-sm border border-green-700">Preview</div>
                 </div>
                 <pre id="generated-source" className="py-1">
                     {showSource()}
