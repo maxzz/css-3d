@@ -43,9 +43,9 @@ function MovementControl() {
         <div
             ref={containerRef}
             className={`
-                bg-gradient-to-b 
-                from-gray-900 via-green-900 to-gray-900
-                active:from-gray-900 active:via-gray-700 active:to-gray-900
+                bg-gradient-radial
+                from-[#2f93724d] to-transparent
+                active:from-[#7f7f7f8f] active:to-[#000000f7]
                 transform
                 active:scale-95
                 transition-all duration-100
