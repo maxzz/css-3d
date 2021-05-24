@@ -13,19 +13,21 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
 export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* CSS */
 
+    const CLASS = 'cube-test';
+
     const parentProps = {
         ...getCubeParentStyles(cubeProps),
     };
-    const parent = `.cube ${objectToCss(parentProps)}`;
+    const parent = `.${CLASS} ${objectToCss(parentProps)}`;
 
-    let face = `.cube > div ${objectToCss({
+    let face = `.${CLASS} > div ${objectToCss({
         position: 'absolute',
         backgroundColor: 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
     })}`;
 
     const styles: FaceStyles = getCubeStyles(cubeProps);
 
-    const faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
+    const faces = [...Object.entries(styles)].map(([key, value]) => `.${CLASS}__${key} ${objectToCss(value)}`).join('\n');
 
     let stylesText = `<style>\n\n${parent}\n\n${face}\n\n${faces}\n\n</style>`; //.replace(/^((\s|\S)*)$/mg, '    $1');
 
@@ -33,13 +35,13 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
 
     let html = `
         <div style="height: 256px; display: flex; align-items: center; justify-content: center">
-            <div class="cube">
-                <div class="cube__face cube__f"></div> <!-- _front_ -->
-                <div class="cube__face cube__l"></div> <!-- _left__ -->
-                <div class="cube__face cube__t"></div> <!-- _top___ -->
-                <div class="cube__face cube__b"></div> <!-- _bottom -->
-                <div class="cube__face cube__r"></div> <!-- _right_ -->
-                <div class="cube__face cube__k"></div> <!-- _back__ -->
+            <div class="${CLASS}">
+                <div class="${CLASS}__f"></div> <!-- _front_ -->
+                <div class="${CLASS}__l"></div> <!-- _left__ -->
+                <div class="${CLASS}__t"></div> <!-- _top___ -->
+                <div class="${CLASS}__b"></div> <!-- _bottom -->
+                <div class="${CLASS}__r"></div> <!-- _right_ -->
+                <div class="${CLASS}__k"></div> <!-- _back__ -->
             </div>
         </div>`.replace(/^[ \t]{8,9}/gm, '');
 
