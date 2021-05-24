@@ -20,7 +20,7 @@ function CubeView() {
 
     function handlePreview() {
         let testElm = document.getElementById('cube-test-place')!;
-        if (showTest) {
+        if (!showTest) { // i.e. now showing
             testElm.innerHTML = generatedText;
         } else {
             testElm.innerHTML = '';
