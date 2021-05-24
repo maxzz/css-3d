@@ -15,6 +15,7 @@ function CubeView() {
     const [angle] = useAtom(angleAtom);
     const [showGenerated] = useAtom(showGeneratedAtom);
     const [showingTest, showingTestSet] = useAtom(showingTestAtom);
+    const [generatedName, generatedNameSet] = useAtom(generatedNameAtom);
 
     const [generatedText] = useAtom(generatedTextAtom);
 
@@ -33,7 +34,14 @@ function CubeView() {
             {/* Generated text */}
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
                 <div className="absolute top-2 right-2 px-2 py-1 flex items-center space-x-1">
+                    <input
+                        className="p-1 border rounded-sm bg-gray-900 text-green-700 border-green-700 outline-none"
+                        value={generatedName}
+                        onChange={(event) => generatedNameSet(event.target.value)}
+                    />
+
                     <CopyButton forId="generated-source" className="px-2 py-1 rounded-sm border border-green-700" />
+
                     <button
                         className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto flex items-center space-x-2"
                         onClick={handlePreview}
