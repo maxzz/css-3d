@@ -37,7 +37,7 @@ export function getCubeStyles(cubeProps: CubeModelProps): FaceStyles {
         '--faceWeight': 5,
         width: 'var(--width)',
         height: 'var(--height)',
-        transform: `translate(-50%, -50%) rotateY(0deg) translateZ(calc((var(--depth) / 2)))`
+        transform: `translate(-50%, -50%) translateZ(calc((var(--depth) / 2)))`
     };
 
     let l = { //left
