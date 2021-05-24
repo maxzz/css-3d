@@ -30,13 +30,15 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* HTML */
 
     let html = `
-        <div class="cube">
-            <div class="cube__face cube__f"></div> <!-- _front_ -->
-            <div class="cube__face cube__l"></div> <!-- _left__ -->
-            <div class="cube__face cube__t"></div> <!-- _top___ -->
-            <div class="cube__face cube__b"></div> <!-- _bottom -->
-            <div class="cube__face cube__r"></div> <!-- _right_ -->
-            <div class="cube__face cube__k"></div> <!-- _back__ -->
+        <div class="h-64 flex items-center justify-center">
+            <div class="cube">
+                <div class="cube__face cube__f"></div> <!-- _front_ -->
+                <div class="cube__face cube__l"></div> <!-- _left__ -->
+                <div class="cube__face cube__t"></div> <!-- _top___ -->
+                <div class="cube__face cube__b"></div> <!-- _bottom -->
+                <div class="cube__face cube__r"></div> <!-- _right_ -->
+                <div class="cube__face cube__k"></div> <!-- _back__ -->
+            </div>
         </div>`.replace(/^[ \t]{8,9}/gm, '');
 
     return `${stylesText}\n${html}`;
