@@ -15,12 +15,12 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
 
     const parentProps = {
         ...getCubeParentStyles(cubeProps),
-        'background-color': 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
     };
     const parent = `.cube ${objectToCss(parentProps)}`;
 
     let face = `.cube > div ${objectToCss({
         position: 'absolute',
+        backgroundColor: 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
     })}`;
 
     const styles: FaceStyles = getCubeStyles(cubeProps);
