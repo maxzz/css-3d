@@ -1,14 +1,14 @@
 import { atom } from 'jotai';
 import { hexaToRgba } from './utils/colors';
 
+// Model properties
+
 export const angleAtom = atom({x: 20, y: 20});
 export const rotationActiveAtom = atom(false);
 
 export const cubeWAtom = atom(250);
 export const cubeHAtom = atom(60);
 export const cubeDAtom = atom(300);
-
-export const showGeneratedAtom = atom(true);
 
 export const colorHexAtom = atom('#1879da80');
 export const colorsAtom = atom(
@@ -19,3 +19,9 @@ export const colorsAtom = atom(
     });
 
 export const shadowRatioAtom = atom(5);
+
+// App properties
+
+export const showGeneratedAtom = atom(true);
+export const showTestAtom = atom(false);
+export const generatedNameAtom = atom('cube-test');
