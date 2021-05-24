@@ -7,3 +7,16 @@
     background: radial-gradient(#03573f, #01140f), url(./assets/noise.png);
     background-blend-mode: multiply;
 }
+
+#cube-test-place {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

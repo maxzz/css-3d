@@ -2,8 +2,7 @@ import React from 'react';
 
 function Eyes({ open }: { open: boolean; }) {
     return (
-        <div className="w-4 h-4">
-
+        <div className="w-3 h-3">
             {open
                 ?
                 /* open */
