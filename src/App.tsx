@@ -12,7 +12,7 @@ function App() {
     const [rotation] = useAtom(angleAtom);
     return (
         <>
-            <div className="bg-gray-100 h-screen flex flex-col">
+            <div className="bg-gray-100 h-screen overflow-hidden flex flex-col">
                 {/* Header */}
                 <div className="flex items-center bg-gray-200 shadow-md dark z-10 border-b border-green-800">
                     {/* Logo */}

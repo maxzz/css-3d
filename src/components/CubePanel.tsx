@@ -29,22 +29,26 @@ function CubeView() {
     }
 
     return (
-        <div className="relative h-full pointer-events-none">
+        <div className="relative h-full">
             {/* Generated text */}
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
                 <div className="absolute top-2 right-2 px-2 py-1 flex items-center space-x-1">
                     <CopyButton forId="generated-source" className="px-2 py-1 rounded-sm border border-green-700" />
-                    <button className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto flex items-center space-x-2" onClick={handlePreview}>
-                        <Eyes open={showingTest} /> <span>Preview</span>
+                    <button
+                        className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto flex items-center space-x-2"
+                        onClick={handlePreview}
+                    >
+                        <Eyes open={showingTest} />
+                        <span>Preview</span>
                     </button>
                 </div>
-                <pre id="generated-source" className="py-1">
+                <pre id="generated-source" className="px-1 py-1 overflow-x-auto">
                     {generatedText}
                 </pre>
             </div>}
 
             {/* Cube and Axes */}
-            <div className="w-[400px] h-[400px] ml-auto">
+            <div className="w-[400px] h-[400px] ml-auto pointer-events-none">
                 {/* Mini cube */}
                 <div className={`z-10 absolute select-none transform ${showGenerated ? 'top-32 right-28 scale-[.2]' : 'top-1/2 right-1/2 scale-[.8]'}`}>
                     <CubeModel angle={angle} width={width} height={height} depth={depth} color={color} shadowRatio={shadowRatio} />
