@@ -1,5 +1,6 @@
 import { atom } from 'jotai';
 import { hexaToRgba } from './utils/colors';
+import { lagacyGenerator } from './utils/text-generator-legacy';
 
 // Model properties
 
@@ -25,3 +26,17 @@ export const shadowRatioAtom = atom(5);
 export const showGeneratedAtom = atom(true);
 export const showTestAtom = atom(false);
 export const generatedNameAtom = atom('cube-test');
+
+export const generatedText = atom(
+    (get) => {
+        const cubeProps = {
+            width: get(cubeWAtom),
+            height: get(cubeHAtom),
+            depth: get(cubeDAtom),
+            color: get(colorsAtom),
+            shadowRatio: get(shadowRatioAtom),
+            angle: get(angleAtom)
+        };
+        return lagacyGenerator(cubeProps, get(generatedNameAtom));
+    }
+)
