@@ -27,7 +27,7 @@ export const showGeneratedAtom = atom(true);
 export const showTestAtom = atom(false);
 export const generatedNameAtom = atom('cube-test');
 
-export const generatedText = atom(
+export const generatedTextAtom = atom(
     (get) => {
         const cubeProps = {
             width: get(cubeWAtom),

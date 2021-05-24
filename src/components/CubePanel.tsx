@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAtom } from 'jotai';
-import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom, generatedNameAtom, showTestAtom } from '../atoms';
+import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom, generatedNameAtom, showTestAtom, generatedTextAtom } from '../atoms';
 import CubeModel from './CubeModel';
 import CopyButton from './CopyButton';
 import { lagacyGenerator } from '../utils/text-generator-legacy';
@@ -17,17 +17,7 @@ function CubeView() {
     const [generatedName] = useAtom(generatedNameAtom);
     const [showTest, showTestSet] = useAtom(showTestAtom);
 
-    function showSource() {
-        const cubeProps = {
-            width,
-            height,
-            depth,
-            color: color,
-            shadowRatio,
-            angle,
-        };
-        return lagacyGenerator(cubeProps, generatedName);
-    }
+    const [generatedText] = useAtom(generatedTextAtom);
 
     function handlePreview() {
         let testElm = document.getElementById('cube-test-place')!;
@@ -48,7 +38,7 @@ function CubeView() {
                     <button className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto" onClick={handlePreview}>Preview</button>
                 </div>
                 <pre id="generated-source" className="py-1">
-                    {showSource()}
+                    {generatedText}
                 </pre>
             </div>}
 
