@@ -20,7 +20,8 @@ export function lagacyGenerator(cubeProps: CubeModelProps, className: string): s
 
     let face = `.${className} > div ${objectToCss({
         position: 'absolute',
-        backgroundColor: 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
+        backgroundColor: 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))',
+        boxShadow: 'inset 2px 2px 14px 4px #00000038',
     })}`;
 
     const styles: FaceStyles = getCubeStyles(cubeProps);
