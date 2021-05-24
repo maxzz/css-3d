@@ -22,9 +22,9 @@ function CubeView() {
     function handlePreview() {
         let testElm = document.getElementById('cube-test-place')!;
         if (showTest) {
-            testElm.innerText = 'on';
+            testElm.innerHTML = generatedText;
         } else {
-            testElm.innerText = 'off';
+            testElm.innerHTML = '';
         }
         showTestSet((v: boolean) => !v);
     }
