@@ -31,7 +31,7 @@ function CubeView() {
         <div className="relative h-full pointer-events-none">
             {/* Generated text */}
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
-                <CopyButton forId="generated-source" className="absolute top-2 right-2 px-2 py-1 rounded-sm border border-green-700 " />
+                <CopyButton forId="generated-source" className="absolute top-2 right-2 px-2 py-1 rounded-sm border border-green-700" />
                 <pre id="generated-source" className="py-1">
                     {showSource()}
                 </pre>

@@ -19,7 +19,7 @@ function CopyButton(props: { className?: string; forId: string; }) {
         }
     }, [ref.current]);
     return (
-        <clipboard-copy ref={ref} class={`${className} select-none transform active:scale-105`} for={forId}>
+        <clipboard-copy ref={ref} class={`${className} select-none transform active:scale-105 pointer-events-auto`} for={forId}>
             Copy
             <div className="notice px-2 py-1 absolute top-1/2 left-[-220%] transform -translate-y-1/2 rounded bg-green-600 text-green-100 text-xs" hidden>Copied!</div>
         </clipboard-copy>
