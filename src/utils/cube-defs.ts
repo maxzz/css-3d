@@ -7,7 +7,7 @@ export type CubeModelProps = {
     depth: number;
     color: ColorRGB;
     angle: {x: number, y: number};
-    shadowRatio: number,
+    shadowRatio: number;
 };
 
 export type FaceStyles = Record<string, React.CSSProperties>;

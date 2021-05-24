@@ -3,8 +3,8 @@ import { useAtom } from 'jotai';
 import { colorsAtom, cubeDAtom, cubeHAtom, cubeWAtom, angleAtom, shadowRatioAtom, showGeneratedAtom, generatedNameAtom, showingTestAtom, generatedTextAtom } from '../atoms';
 import CubeModel from './CubeModel';
 import CopyButton from './CopyButton';
-import { lagacyGenerator } from '../utils/text-generator-legacy';
 import Axes from './Axes';
+import Eyes from './Eyes';
 
 function CubeView() {
     const [width] = useAtom(cubeWAtom);
@@ -34,7 +34,9 @@ function CubeView() {
             {showGenerated && <div className="absolute top-0 left-0 text-[.5rem] font-mono text-green-700 bg-gray-900 w-full h-full">
                 <div className="absolute top-2 right-2 px-2 py-1 flex items-center space-x-1">
                     <CopyButton forId="generated-source" className="px-2 py-1 rounded-sm border border-green-700" />
-                    <button className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto" onClick={handlePreview}>Preview</button>
+                    <button className="px-2 py-1 rounded-sm border border-green-700 pointer-events-auto flex items-center space-x-2" onClick={handlePreview}>
+                        <Eyes open={showingTest} /> <span>Preview</span>
+                    </button>
                 </div>
                 <pre id="generated-source" className="py-1">
                     {generatedText}
