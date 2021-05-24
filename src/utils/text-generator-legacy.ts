@@ -10,12 +10,12 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
 
 export function lagacyGenerator(cubeProps: CubeModelProps): string {
     /* CSS */
-    
-    let parentProps = {
+
+    const parentProps = {
         ...getCubeParentStyles(cubeProps),
         'background-color': 'rgba(calc(var(--faceR) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceG) - calc(var(--shadowRatio) * var(--faceWeight))), calc(var(--faceB) - calc(var(--shadowRatio) * var(--faceWeight))), var(--faceA))'
-    }
-    let parent = `.cube ${objectToCss(parentProps)}`;
+    };
+    const parent = `.cube ${objectToCss(parentProps)}`;
 
     let face = `.cube > div ${objectToCss({
         position: 'absolute',
@@ -23,13 +23,13 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
 
     const styles: FaceStyles = getCubeStyles(cubeProps);
 
-    let faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
+    const faces = [...Object.entries(styles)].map(([key, value]) => `.cube__${key} ${objectToCss(value)}`).join('\n');
+
+    let stylesText = `<style>\n\n${parent}\n\n${face}\n\n${faces}\n\n</style>`; //.replace(/^((\s|\S)*)$/mg, '    $1');
 
     /* HTML */
 
     let html = `
-        /* HTML */
-
         <div class="cube">
             <div class="cube__face cube__f"></div> <!-- _front_ -->
             <div class="cube__face cube__l"></div> <!-- _left__ -->
@@ -37,7 +37,7 @@ export function lagacyGenerator(cubeProps: CubeModelProps): string {
             <div class="cube__face cube__b"></div> <!-- _bottom -->
             <div class="cube__face cube__r"></div> <!-- _right_ -->
             <div class="cube__face cube__k"></div> <!-- _back__ -->
-        </div>`.replace(/^[ \t]{12,13}/gm, '');
+        </div>`.replace(/^[ \t]{8,9}/gm, '');
 
-    return `/* CSS */\n\n${parent}\n\n${face}\n\n${faces}\n${html}`;
+    return `${stylesText}\n${html}`;
 }
