@@ -13,6 +13,8 @@ function objectToCss<T extends object>(obj: Exclude<T, any[] | Function>): strin
 export function lagacyGenerator(cubeProps: CubeModelProps, className: string): string {
     /* CSS */
 
+    className = className || 'cube';
+
     const parentProps = {
         ...getCubeParentStyles(cubeProps),
     };
