@@ -14,7 +14,6 @@ function CubeView() {
     const [shadowRatio] = useAtom(shadowRatioAtom);
     const [angle] = useAtom(angleAtom);
     const [showGenerated] = useAtom(showGeneratedAtom);
-    const [generatedName] = useAtom(generatedNameAtom);
     const [showTest, showTestSet] = useAtom(showTestAtom);
 
     const [generatedText] = useAtom(generatedTextAtom);
