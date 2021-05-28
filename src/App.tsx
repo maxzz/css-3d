@@ -37,8 +37,8 @@ function App() {
                             <div className="flex-0 my-2 ml-1 mr-2 relative">
                                 <MovementControl />
                                 <div className="text-[.5rem] absolute w-full flex justify-center space-x-1 text-dark-label">
-                                    <div className="w">x: {rotation.y}</div>
-                                    <div className="w">y: {rotation.x}</div>
+                                    <div className="w">x: {rotation.y}°</div>
+                                    <div className="w">y: {rotation.x}°</div>
                                 </div>
                             </div>
                         </div>
