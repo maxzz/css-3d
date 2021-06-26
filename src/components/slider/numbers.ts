@@ -13,6 +13,19 @@ export function mapRange(fromValue: number, fromStart: number, fromEnd: number, 
     return toStart + p * (toEnd - toStart);
 }
 
+function lerp(a: number, b: number, t: number): number {
+    return (1 - t) * a + t * b;
+}
+
+function invLerp(a: number, b: number, v: number): number {
+    return (v - a) / (b - a);
+}
+
+function remap(inMin: number, inMax: number, outMin: number, outMax: number, v: number): number {
+    let t = invLerp(inMin, inMax, v);
+    return lerp(outMin, outMax, t);
+}
+
 export function constrainRange(value: number, min: number, max: number): number {
     return Math.min(Math.max(value, min), max);
 }
